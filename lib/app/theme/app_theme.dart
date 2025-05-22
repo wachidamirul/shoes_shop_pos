@@ -4,9 +4,9 @@ class LightTheme {
   static ThemeData get theme => ThemeData(
     brightness: Brightness.light,
     colorScheme: ColorScheme.light(
-      surface: Colors.grey.shade300,
-      primary: Colors.grey.shade200,
-      secondary: Colors.grey.shade100,
+      surface: Colors.indigo.shade50,
+      primary: Colors.indigo.shade200,
+      secondary: Colors.indigo.shade100,
     ),
   );
 }

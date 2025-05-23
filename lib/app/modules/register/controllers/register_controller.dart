@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shoes_shop_pos/app/routes/app_pages.dart';
 
-class LoginController extends GetxController {
-  //TODO: Implement LoginController
+class RegisterController extends GetxController {
+  //TODO: Implement RegisterController
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
   bool isObscure = true;
+  bool isObscureConfirm = true;
 
-  void goToRegister() {
-    Get.offAllNamed(Routes.REGISTER);
+  void goToLogin() {
+    Get.offAllNamed(Routes.LOGIN);
   }
 
   @override

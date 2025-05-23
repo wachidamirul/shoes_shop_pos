@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:shoes_shop_pos/app/utils/constants/image_strings.dart';
+import 'package:shoes_shop_pos/app/utils/constants/text_strings.dart';
 import 'package:shoes_shop_pos/app/theme/font_theme.dart';
 import 'package:shoes_shop_pos/app/widgets/button.dart';
 import 'package:shoes_shop_pos/app/widgets/textform.dart';
@@ -27,18 +29,14 @@ class RegisterView extends GetView<RegisterController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Register new\naccount',
+                        MyTexts.registerTitle,
                         style: FontTheme.bold.copyWith(
                           fontSize: 24,
                           color: Theme.of(context).textTheme.titleLarge?.color,
                         ),
                       ),
                       const SizedBox(height: 16),
-                      SvgPicture.asset(
-                        'assets/vectors/line.svg',
-                        width: 99,
-                        height: 4,
-                      ),
+                      SvgPicture.asset(MyImages.authLine, width: 99, height: 4),
                     ],
                   ),
 
@@ -57,15 +55,15 @@ class RegisterView extends GetView<RegisterController> {
                             const SizedBox(height: 24),
                             MyTextForm(
                               controller: c.emailController,
-                              labelText: 'Email',
-                              hintText: 'example@mail.test',
+                              labelText: MyTexts.email,
+                              hintText: MyTexts.emailHint,
                               prefixIcon: Icons.email,
                             ),
                             const SizedBox(height: 24),
                             MyTextForm(
                               controller: c.passwordController,
-                              labelText: 'Password',
-                              hintText: 'Password',
+                              labelText: MyTexts.password,
+                              hintText: MyTexts.passwordHint,
                               prefixIcon: Icons.lock,
                               isPassword: true,
                               obscureText: c.isObscure,
@@ -81,8 +79,8 @@ class RegisterView extends GetView<RegisterController> {
                             const SizedBox(height: 24),
                             MyTextForm(
                               controller: c.confirmPasswordController,
-                              labelText: 'Confirm Password',
-                              hintText: 'Confirm Password',
+                              labelText: MyTexts.confirmPassword,
+                              hintText: MyTexts.confirmPasswordHint,
                               prefixIcon: Icons.lock,
                               isPassword: true,
                               obscureText: c.isObscureConfirm,
@@ -99,7 +97,7 @@ class RegisterView extends GetView<RegisterController> {
                             MyButton(
                               onPressed: () {},
                               color: Colors.indigo.shade500,
-                              label: "Register",
+                              label: MyTexts.createAccount,
                             ),
                           ],
                         ),
@@ -111,7 +109,7 @@ class RegisterView extends GetView<RegisterController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Already have an account? ",
+                        MyTexts.alreadyHaveAnAccount,
                         style: FontTheme.medium.copyWith(
                           fontSize: 14,
                           color: Theme.of(context).textTheme.bodyMedium?.color,
@@ -120,7 +118,7 @@ class RegisterView extends GetView<RegisterController> {
                       GestureDetector(
                         onTap: c.goToLogin,
                         child: Text(
-                          'Login',
+                          MyTexts.login,
                           style: FontTheme.medium.copyWith(
                             fontSize: 14,
                             color:

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static ThemeData light = ThemeData(
+    useMaterial3: true,
+    fontFamily: 'Poppins',
     brightness: Brightness.light,
     appBarTheme: AppBarTheme(backgroundColor: Colors.transparent, elevation: 0),
     colorScheme: ColorScheme.light(
@@ -17,7 +19,7 @@ class AppTheme {
       headlineMedium: TextStyle(color: Colors.indigo.shade500),
     ),
     inputDecorationTheme: InputDecorationTheme(
-      fillColor: Colors.white,
+      fillColor: Colors.grey.shade50,
       labelStyle: TextStyle(color: Colors.grey.shade700),
       hintStyle: TextStyle(color: Colors.grey.shade500),
       suffixIconColor: Colors.grey.shade700,
@@ -33,6 +35,8 @@ class AppTheme {
   );
 
   static ThemeData dark = ThemeData(
+    useMaterial3: true,
+    fontFamily: 'Poppins',
     brightness: Brightness.dark,
     appBarTheme: AppBarTheme(backgroundColor: Colors.transparent, elevation: 0),
     colorScheme: ColorScheme.dark(

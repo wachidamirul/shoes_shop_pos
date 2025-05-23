@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:shoes_shop_pos/app/utils/constants/image_strings.dart';
+import 'package:shoes_shop_pos/app/utils/constants/text_strings.dart';
 import 'package:shoes_shop_pos/app/theme/font_theme.dart';
 import 'package:shoes_shop_pos/app/widgets/button.dart';
 import 'package:shoes_shop_pos/app/widgets/iconbutton.dart';
@@ -29,18 +31,14 @@ class LoginView extends GetView<LoginController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Login to your\naccount',
+                        MyTexts.loginTitle,
                         style: FontTheme.bold.copyWith(
                           fontSize: 24,
                           color: Theme.of(context).textTheme.titleLarge?.color,
                         ),
                       ),
                       const SizedBox(height: 16),
-                      SvgPicture.asset(
-                        'assets/vectors/line.svg',
-                        width: 99,
-                        height: 4,
-                      ),
+                      SvgPicture.asset(MyImages.authLine, width: 99, height: 4),
                     ],
                   ),
 
@@ -52,15 +50,15 @@ class LoginView extends GetView<LoginController> {
                           children: [
                             MyTextForm(
                               controller: c.emailController,
-                              labelText: 'Email',
-                              hintText: 'example@mail.test',
+                              labelText: MyTexts.email,
+                              hintText: MyTexts.emailHint,
                               prefixIcon: Icons.email,
                             ),
                             const SizedBox(height: 24),
                             MyTextForm(
                               controller: c.passwordController,
-                              labelText: 'Password',
-                              hintText: 'Password',
+                              labelText: MyTexts.password,
+                              hintText: MyTexts.passwordHint,
                               prefixIcon: Icons.lock,
                               isPassword: true,
                               obscureText: c.isObscure,
@@ -77,7 +75,7 @@ class LoginView extends GetView<LoginController> {
                             GestureDetector(
                               onTap: () {},
                               child: Text(
-                                'Forgot Password?',
+                                MyTexts.forgetPassword,
                                 style: FontTheme.medium.copyWith(
                                   fontSize: 14,
                                   color:
@@ -91,7 +89,7 @@ class LoginView extends GetView<LoginController> {
                             MyButton(
                               onPressed: () {},
                               color: Colors.indigo.shade500,
-                              label: "Login",
+                              label: MyTexts.login,
                             ),
                           ],
                         ),
@@ -108,7 +106,7 @@ class LoginView extends GetView<LoginController> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
-                              'Or continue with',
+                              MyTexts.orSignInWith,
                               style: FontTheme.regular.copyWith(
                                 color:
                                     Theme.of(
@@ -129,9 +127,9 @@ class LoginView extends GetView<LoginController> {
                         children: [
                           MyIconButton(
                             onPressed: () {},
-                            label: 'Google',
+                            label: MyTexts.google,
                             icon: SvgPicture.asset(
-                              'assets/vectors/google.svg',
+                              MyImages.google,
                               width: 16,
                               height: 16,
                             ),
@@ -145,9 +143,9 @@ class LoginView extends GetView<LoginController> {
                           const SizedBox(width: 20),
                           MyIconButton(
                             onPressed: () {},
-                            label: 'Facebook',
+                            label: MyTexts.facebook,
                             icon: SvgPicture.asset(
-                              'assets/vectors/facebook.svg',
+                              MyImages.facebook,
                               width: 16,
                               height: 16,
                             ),
@@ -167,7 +165,7 @@ class LoginView extends GetView<LoginController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't have an account? ",
+                        MyTexts.dontHaveAnAccount,
                         style: FontTheme.medium.copyWith(
                           fontSize: 14,
                           color: Theme.of(context).textTheme.labelMedium?.color,
@@ -176,7 +174,7 @@ class LoginView extends GetView<LoginController> {
                       GestureDetector(
                         onTap: c.goToRegister,
                         child: Text(
-                          'Register',
+                          MyTexts.register,
                           style: FontTheme.medium.copyWith(
                             fontSize: 14,
                             color:

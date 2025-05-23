@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:shoes_shop_pos/app/theme/font_theme.dart';
-import 'package:shoes_shop_pos/app/theme/theme_controller.dart';
+import 'package:shoes_shop_pos/app/utils/theme/theme_controller.dart';
 import 'package:shoes_shop_pos/app/widgets/box.dart';
 import 'package:shoes_shop_pos/app/widgets/button.dart';
 

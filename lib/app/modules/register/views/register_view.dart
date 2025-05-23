@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:shoes_shop_pos/app/theme/color_theme.dart';
 import 'package:shoes_shop_pos/app/theme/font_theme.dart';
 import 'package:shoes_shop_pos/app/widgets/button.dart';
 import 'package:shoes_shop_pos/app/widgets/textform.dart';
@@ -31,7 +30,7 @@ class RegisterView extends GetView<RegisterController> {
                         'Register new\naccount',
                         style: FontTheme.bold.copyWith(
                           fontSize: 24,
-                          color: ColorTheme.darkGray,
+                          color: Theme.of(context).textTheme.titleLarge?.color,
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -50,71 +49,53 @@ class RegisterView extends GetView<RegisterController> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             MyTextForm(
+                              controller: c.nameController,
                               labelText: 'Full Name',
                               hintText: 'John Doe',
-                              prefixIcon: Icon(
-                                Icons.person,
-                                color: ColorTheme.darkGray,
-                              ),
-                              controller: c.nameController,
+                              prefixIcon: Icons.person,
                             ),
                             const SizedBox(height: 24),
                             MyTextForm(
+                              controller: c.emailController,
                               labelText: 'Email',
                               hintText: 'example@mail.test',
-                              prefixIcon: Icon(
-                                Icons.email,
-                                color: ColorTheme.darkGray,
-                              ),
-                              controller: c.emailController,
+                              prefixIcon: Icons.email,
                             ),
                             const SizedBox(height: 24),
                             MyTextForm(
+                              controller: c.passwordController,
                               labelText: 'Password',
                               hintText: 'Password',
+                              prefixIcon: Icons.lock,
+                              isPassword: true,
                               obscureText: c.isObscure,
-                              suffixIcon: IconButton(
-                                icon: Icon(
+                              suffixIcon:
                                   c.isObscure
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: ColorTheme.darkGray,
-                                ),
-                                onPressed: () {
-                                  c.isObscure = !c.isObscure;
-                                  c.update();
-                                },
-                              ),
-                              prefixIcon: Icon(
-                                Icons.lock,
-                                color: ColorTheme.darkGray,
-                              ),
-                              controller: c.passwordController,
+                              onChanged: () {
+                                c.isObscure = !c.isObscure;
+                                c.update();
+                              },
                             ),
                             const SizedBox(height: 24),
                             MyTextForm(
+                              controller: c.confirmPasswordController,
                               labelText: 'Confirm Password',
                               hintText: 'Confirm Password',
+                              prefixIcon: Icons.lock,
+                              isPassword: true,
                               obscureText: c.isObscureConfirm,
-                              suffixIcon: IconButton(
-                                icon: Icon(
+                              suffixIcon:
                                   c.isObscureConfirm
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: ColorTheme.darkGray,
-                                ),
-                                onPressed: () {
-                                  c.isObscureConfirm = !c.isObscureConfirm;
-                                  c.update();
-                                },
-                              ),
-                              prefixIcon: Icon(
-                                Icons.lock,
-                                color: ColorTheme.darkGray,
-                              ),
-                              controller: c.confirmPasswordController,
+                              onChanged: () {
+                                c.isObscureConfirm = !c.isObscureConfirm;
+                                c.update();
+                              },
                             ),
-                            const SizedBox(height: 24),
+                            const SizedBox(height: 40),
                             MyButton(
                               onPressed: () {},
                               color: Colors.indigo.shade500,
@@ -133,7 +114,7 @@ class RegisterView extends GetView<RegisterController> {
                         "Already have an account? ",
                         style: FontTheme.medium.copyWith(
                           fontSize: 14,
-                          color: ColorTheme.darkGray,
+                          color: Theme.of(context).textTheme.bodyMedium?.color,
                         ),
                       ),
                       GestureDetector(
@@ -142,7 +123,10 @@ class RegisterView extends GetView<RegisterController> {
                           'Login',
                           style: FontTheme.medium.copyWith(
                             fontSize: 14,
-                            color: Colors.indigo.shade500,
+                            color:
+                                Theme.of(
+                                  context,
+                                ).textTheme.headlineMedium?.color,
                           ),
                         ),
                       ),

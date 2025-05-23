@@ -8,17 +8,14 @@ class SplashController extends GetxController {
   final _key = 'is_login';
 
   redirectPage() async {
-    String? isLogin = _box.read(_key);
+    // bool isLogin = _box.read(_key);
+    bool isLogin = false;
 
-    if (isLogin == null) {
-      await Future.delayed(
-        Duration(seconds: 4),
-      ).then((value) => Get.offAllNamed(Routes.LOGIN));
-    } else {
-      await Future.delayed(
-        Duration(seconds: 4),
-      ).then((value) => Get.offAllNamed(Routes.HOME));
-    }
+    await Future.delayed(Duration(seconds: 4)).then(
+      (value) => {
+        isLogin ? Get.offAllNamed(Routes.HOME) : Get.offAllNamed(Routes.LOGIN),
+      },
+    );
   }
 
   @override

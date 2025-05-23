@@ -30,8 +30,8 @@ class HomeView extends GetView<HomeController> {
           color: Theme.of(context).colorScheme.primary,
           child: MyButton(
             color: Theme.of(context).colorScheme.secondary,
-            onPressed: themeController.toggleTheme,
-            label: 'Toggle Theme',
+            onPressed: themeController.setThemeSystem,
+            label: 'System Theme',
           ),
         ),
       ),

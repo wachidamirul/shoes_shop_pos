@@ -5,9 +5,11 @@ class MyTextForm extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
   final String hintText;
-  final Widget prefixIcon;
-  final Widget suffixIcon;
+  final IconData prefixIcon;
+  final bool isPassword;
   final bool obscureText;
+  final IconData suffixIcon;
+  final VoidCallback? onChanged;
 
   const MyTextForm({
     super.key,
@@ -15,8 +17,10 @@ class MyTextForm extends StatelessWidget {
     required this.labelText,
     required this.hintText,
     required this.prefixIcon,
-    this.suffixIcon = const SizedBox(),
+    this.isPassword = false,
     this.obscureText = false,
+    this.suffixIcon = Icons.check,
+    this.onChanged,
   });
 
   @override
@@ -24,29 +28,64 @@ class MyTextForm extends StatelessWidget {
     return TextFormField(
       controller: controller,
       obscureText: obscureText,
+      cursorColor: Colors.grey.shade500,
+      style: FontTheme.medium.copyWith(
+        fontSize: 14,
+        color:
+            Brightness.light == Theme.of(context).brightness
+                ? Colors.grey.shade700
+                : Colors.grey.shade400,
+      ),
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.indigo.shade200, width: 2),
+          borderSide: BorderSide(
+            color:
+                Theme.of(
+                  context,
+                ).inputDecorationTheme.enabledBorder?.borderSide.color ??
+                Colors.grey,
+            width: 2,
+          ),
           borderRadius: BorderRadius.circular(8),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.indigo.shade500, width: 2),
+          borderSide: BorderSide(
+            color:
+                Theme.of(
+                  context,
+                ).inputDecorationTheme.focusedBorder?.borderSide.color ??
+                Colors.indigo,
+            width: 2,
+          ),
           borderRadius: BorderRadius.circular(8),
         ),
-        fillColor: Colors.grey.shade50,
+        fillColor: Theme.of(context).inputDecorationTheme.fillColor,
         filled: true,
         labelText: labelText,
         labelStyle: FontTheme.medium.copyWith(
           fontSize: 14,
-          color: Colors.indigo.shade500,
+          color: Theme.of(context).inputDecorationTheme.labelStyle?.color,
         ),
         hintText: hintText,
         hintStyle: FontTheme.medium.copyWith(
-          fontSize: 14,
-          color: Colors.grey.shade500,
+          fontSize: 12,
+          color: Theme.of(context).inputDecorationTheme.hintStyle?.color,
         ),
-        prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
+        prefixIcon: Icon(
+          prefixIcon,
+          color: Theme.of(context).inputDecorationTheme.prefixIconColor,
+        ),
+        suffixIcon:
+            isPassword
+                ? IconButton(
+                  icon: Icon(
+                    suffixIcon,
+                    color:
+                        Theme.of(context).inputDecorationTheme.suffixIconColor,
+                  ),
+                  onPressed: onChanged,
+                )
+                : null,
       ),
     );
   }

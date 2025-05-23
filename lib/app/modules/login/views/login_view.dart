@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:shoes_shop_pos/app/theme/color_theme.dart';
 import 'package:shoes_shop_pos/app/theme/font_theme.dart';
 import 'package:shoes_shop_pos/app/widgets/button.dart';
 import 'package:shoes_shop_pos/app/widgets/iconbutton.dart';
@@ -33,7 +32,7 @@ class LoginView extends GetView<LoginController> {
                         'Login to your\naccount',
                         style: FontTheme.bold.copyWith(
                           fontSize: 24,
-                          color: ColorTheme.darkGray,
+                          color: Theme.of(context).textTheme.titleLarge?.color,
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -52,36 +51,27 @@ class LoginView extends GetView<LoginController> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             MyTextForm(
+                              controller: c.emailController,
                               labelText: 'Email',
                               hintText: 'example@mail.test',
-                              prefixIcon: Icon(
-                                Icons.email,
-                                color: ColorTheme.darkGray,
-                              ),
-                              controller: c.emailController,
+                              prefixIcon: Icons.email,
                             ),
                             const SizedBox(height: 24),
                             MyTextForm(
+                              controller: c.passwordController,
                               labelText: 'Password',
                               hintText: 'Password',
+                              prefixIcon: Icons.lock,
+                              isPassword: true,
                               obscureText: c.isObscure,
-                              suffixIcon: IconButton(
-                                icon: Icon(
+                              suffixIcon:
                                   c.isObscure
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: ColorTheme.darkGray,
-                                ),
-                                onPressed: () {
-                                  c.isObscure = !c.isObscure;
-                                  c.update();
-                                },
-                              ),
-                              prefixIcon: Icon(
-                                Icons.lock,
-                                color: ColorTheme.darkGray,
-                              ),
-                              controller: c.passwordController,
+                              onChanged: () {
+                                c.isObscure = !c.isObscure;
+                                c.update();
+                              },
                             ),
                             const SizedBox(height: 16),
                             GestureDetector(
@@ -90,7 +80,10 @@ class LoginView extends GetView<LoginController> {
                                 'Forgot Password?',
                                 style: FontTheme.medium.copyWith(
                                   fontSize: 14,
-                                  color: Colors.indigo.shade500,
+                                  color:
+                                      Theme.of(
+                                        context,
+                                      ).textTheme.headlineMedium?.color,
                                 ),
                               ),
                             ),
@@ -107,17 +100,28 @@ class LoginView extends GetView<LoginController> {
                       const SizedBox(height: 36),
                       Row(
                         children: [
-                          Expanded(child: Divider(color: Colors.grey.shade400)),
+                          Expanded(
+                            child: Divider(
+                              color: Theme.of(context).dividerColor,
+                            ),
+                          ),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
                               'Or continue with',
                               style: FontTheme.regular.copyWith(
-                                color: ColorTheme.darkGray,
+                                color:
+                                    Theme.of(
+                                      context,
+                                    ).textTheme.labelMedium?.color,
                               ),
                             ),
                           ),
-                          Expanded(child: Divider(color: Colors.grey.shade400)),
+                          Expanded(
+                            child: Divider(
+                              color: Theme.of(context).dividerColor,
+                            ),
+                          ),
                         ],
                       ),
                       const SizedBox(height: 36),
@@ -132,7 +136,10 @@ class LoginView extends GetView<LoginController> {
                               height: 16,
                             ),
                             labelStyle: FontTheme.medium.copyWith(
-                              color: ColorTheme.darkGray,
+                              color:
+                                  Theme.of(
+                                    context,
+                                  ).textTheme.labelMedium?.color,
                             ),
                           ),
                           const SizedBox(width: 20),
@@ -145,7 +152,10 @@ class LoginView extends GetView<LoginController> {
                               height: 16,
                             ),
                             labelStyle: FontTheme.medium.copyWith(
-                              color: ColorTheme.darkGray,
+                              color:
+                                  Theme.of(
+                                    context,
+                                  ).textTheme.labelMedium?.color,
                             ),
                           ),
                         ],
@@ -160,7 +170,7 @@ class LoginView extends GetView<LoginController> {
                         "Don't have an account? ",
                         style: FontTheme.medium.copyWith(
                           fontSize: 14,
-                          color: ColorTheme.darkGray,
+                          color: Theme.of(context).textTheme.labelMedium?.color,
                         ),
                       ),
                       GestureDetector(
@@ -169,7 +179,10 @@ class LoginView extends GetView<LoginController> {
                           'Register',
                           style: FontTheme.medium.copyWith(
                             fontSize: 14,
-                            color: Colors.indigo.shade500,
+                            color:
+                                Theme.of(
+                                  context,
+                                ).textTheme.headlineMedium?.color,
                           ),
                         ),
                       ),

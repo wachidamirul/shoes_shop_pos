@@ -1,6 +1,7 @@
-import 'package:flutter/animation.dart';
+import 'package:flutter/material.dart';
 
 class ColorTheme {
+  // Light Theme
   static Color mainBlue = Color(0xFF4AB2CF);
   static Color white = Color(0xFFFFFFFF);
   static Color black = Color(0xFF000000);

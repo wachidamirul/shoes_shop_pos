@@ -9,13 +9,6 @@ class ThemeController extends GetxController {
   // Reactive themeMode
   late final Rx<ThemeMode> themeMode;
 
-  @override
-  void onInit() {
-    super.onInit();
-    themeMode = _loadThemeFromBox().obs;
-    Get.changeThemeMode(themeMode.value); // Apply theme on start
-  }
-
   ThemeMode _loadThemeFromBox() {
     String? themeText = _box.read(_key);
     switch (themeText) {
@@ -42,5 +35,25 @@ class ThemeController extends GetxController {
       Get.changeThemeMode(ThemeMode.light);
       _saveThemeToBox('light');
     }
+  }
+
+  void setThemeSystem() {
+    themeMode.value = ThemeMode.system;
+    Get.changeThemeMode(ThemeMode.system);
+    _saveThemeToBox('system');
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    themeMode = _loadThemeFromBox().obs;
+    Get.changeThemeMode(themeMode.value); // Apply theme on start
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    // Set the initial theme based on the saved value
+    print('Initial theme mode: ${themeMode.value}');
   }
 }

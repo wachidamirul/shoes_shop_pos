@@ -44,12 +44,12 @@ class MyTextTheme {
     ),
     bodyMedium: const TextStyle().copyWith(
       fontSize: 14.0,
-      fontWeight: FontWeight.normal,
+      fontWeight: FontWeight.w500,
       color: MyColors.dark,
     ),
     bodySmall: const TextStyle().copyWith(
       fontSize: 14.0,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.normal,
       color: MyColors.dark.withValues(alpha: 0.5),
     ),
 

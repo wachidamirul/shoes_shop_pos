@@ -9,13 +9,17 @@ class MyTexts {
   static const String login = "Login";
   static const String loginTitle = "Login to your\naccount";
   static const String forgetPassword = "Forgot Password?";
-  static const String orSignInWith = "Or continue with";
-  static const String dontHaveAnAccount = "Don’t have an account? ";
+  static const String orLoginWith = "Or Login with";
 
   static const String register = "Register";
   static const String registerTitle = "Register new\naccount";
   static const String createAccount = "Create Account";
-  static const String alreadyHaveAnAccount = "Already have an account? ";
+  static const String orRegisterWith = "Or Register with";
+  static const String termsAndConditions =
+      "I agree to the Terms and Conditions";
+
+  static const String firstName = "First Name";
+  static const String lastName = "Last Name";
 
   static const String email = "E-Mail";
   static const String emailHint = "Enter your email";
@@ -28,7 +32,4 @@ class MyTexts {
   static const String confirmPassword = "Confirm Password";
   static const String confirmPasswordHint = "Re-enter your password";
   static const String confirmPasswordError = "Password does not match";
-
-  static const String firstName = "First Name";
-  static const String lastName = "Last Name";
 }

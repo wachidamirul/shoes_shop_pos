@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -9,11 +8,12 @@ import '../../../utils/helpers/helper_functions.dart';
 import '../controllers/login_controller.dart';
 
 class MyLoginForm extends StatelessWidget {
-  const MyLoginForm({super.key});
+  const MyLoginForm({super.key, required this.controller});
+
+  final LoginController controller;
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<LoginController>();
     final dark = MyHelperFunctions.isDarkMode(context);
 
     return Form(
@@ -85,7 +85,7 @@ class MyLoginForm extends StatelessWidget {
             child: OutlinedButton(
               onPressed: controller.goToRegister,
               style: Theme.of(context).outlinedButtonTheme.style,
-              child: Text(MyTexts.createAccount),
+              child: Text(MyTexts.register),
             ),
           ),
         ],

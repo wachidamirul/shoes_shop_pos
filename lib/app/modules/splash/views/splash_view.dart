@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:shoes_shop_pos/app/utils/constants/image_strings.dart';
 
+import '../../../utils/constants/image_strings.dart';
 import '../controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {

@@ -11,9 +11,9 @@ class MyOutlinedButtonTheme {
       foregroundColor: MyColors.dark,
       side: const BorderSide(color: MyColors.borderPrimary),
       textStyle: const TextStyle(
-        fontSize: 16,
+        fontSize: 14,
         color: MyColors.black,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w500,
       ),
       padding: const EdgeInsets.symmetric(
         vertical: MySizes.buttonHeight,
@@ -30,9 +30,9 @@ class MyOutlinedButtonTheme {
       foregroundColor: MyColors.light,
       side: const BorderSide(color: MyColors.borderPrimary),
       textStyle: const TextStyle(
-        fontSize: 16,
+        fontSize: 14,
         color: MyColors.textWhite,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w500,
       ),
       padding: const EdgeInsets.symmetric(
         vertical: MySizes.buttonHeight,

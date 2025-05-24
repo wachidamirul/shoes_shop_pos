@@ -12,11 +12,11 @@ class MyTextFormFieldTheme {
     // constraints: const BoxConstraints.expand(height: MySizes.inputFieldHeight),
     labelStyle: const TextStyle().copyWith(
       fontSize: MySizes.fontSizeMd,
-      color: MyColors.black,
+      color: MyColors.darkGrey,
     ),
     hintStyle: const TextStyle().copyWith(
       fontSize: MySizes.fontSizeSm,
-      color: MyColors.black,
+      color: MyColors.darkGrey,
     ),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
     floatingLabelStyle: const TextStyle().copyWith(
@@ -24,15 +24,15 @@ class MyTextFormFieldTheme {
     ),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(MySizes.inputFieldRadius),
-      borderSide: const BorderSide(width: 1, color: MyColors.grey),
+      borderSide: const BorderSide(width: 1, color: MyColors.darkGrey),
     ),
     enabledBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(MySizes.inputFieldRadius),
-      borderSide: const BorderSide(width: 1, color: MyColors.grey),
+      borderSide: const BorderSide(width: 1, color: MyColors.darkGrey),
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(MySizes.inputFieldRadius),
-      borderSide: const BorderSide(width: 1, color: MyColors.dark),
+      borderSide: const BorderSide(width: 1, color: MyColors.black),
     ),
     errorBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(MySizes.inputFieldRadius),
@@ -51,11 +51,11 @@ class MyTextFormFieldTheme {
     // constraints: const BoxConstraints.expand(height: MySizes.inputFieldHeight),
     labelStyle: const TextStyle().copyWith(
       fontSize: MySizes.fontSizeMd,
-      color: MyColors.white,
+      color: MyColors.softGrey,
     ),
     hintStyle: const TextStyle().copyWith(
       fontSize: MySizes.fontSizeSm,
-      color: MyColors.white,
+      color: MyColors.softGrey,
     ),
     floatingLabelStyle: const TextStyle().copyWith(
       color: MyColors.white.withValues(alpha: 0.8),

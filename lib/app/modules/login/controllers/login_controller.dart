@@ -9,8 +9,18 @@ class LoginController extends GetxController {
 
   bool isObscure = true;
 
+  void toggleObscure() {
+    isObscure = !isObscure;
+    update();
+  }
+
   void goToRegister() {
     Get.offAllNamed(Routes.REGISTER);
+  }
+
+  void handleLogin() {
+    print('Email: ${emailController.text}');
+    print('Password: ${passwordController.text}');
   }
 
   @override

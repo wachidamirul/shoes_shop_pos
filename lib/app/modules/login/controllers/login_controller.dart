@@ -20,8 +20,7 @@ class LoginController extends GetxController {
   }
 
   void handleLogin() {
-    print('Email: ${emailController.text}');
-    print('Password: ${passwordController.text}');
+    Get.offAllNamed(Routes.HOME);
   }
 
   @override

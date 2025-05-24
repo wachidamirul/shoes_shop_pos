@@ -11,15 +11,12 @@ class MyAppBarTheme {
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
-    iconTheme: IconThemeData(color: MyColors.black, size: MySizes.iconMd),
-    actionsIconTheme: IconThemeData(
-      color: MyColors.black,
-      size: MySizes.iconMd,
-    ),
+    iconTheme: IconThemeData(color: MyColors.dark, size: MySizes.iconMd),
+    actionsIconTheme: IconThemeData(color: MyColors.dark, size: MySizes.iconMd),
     titleTextStyle: TextStyle(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
-      color: MyColors.black,
+      color: MyColors.dark,
     ),
   );
 
@@ -29,15 +26,15 @@ class MyAppBarTheme {
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
-    iconTheme: IconThemeData(color: MyColors.black, size: MySizes.iconMd),
+    iconTheme: IconThemeData(color: MyColors.light, size: MySizes.iconMd),
     actionsIconTheme: IconThemeData(
-      color: MyColors.white,
+      color: MyColors.light,
       size: MySizes.iconMd,
     ),
     titleTextStyle: TextStyle(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
-      color: MyColors.white,
+      color: MyColors.light,
     ),
   );
 }

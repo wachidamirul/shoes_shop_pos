@@ -6,7 +6,9 @@ import 'package:shoes_shop_pos/app/utils/theme/widget_theme/checkbox_theme.dart'
 import 'package:shoes_shop_pos/app/utils/theme/widget_theme/chip_theme.dart';
 import 'package:shoes_shop_pos/app/utils/theme/widget_theme/elevated_button_theme.dart';
 import 'package:shoes_shop_pos/app/utils/theme/widget_theme/outlined_button_theme.dart';
+import 'package:shoes_shop_pos/app/utils/theme/widget_theme/text_button_theme.dart';
 import 'package:shoes_shop_pos/app/utils/theme/widget_theme/text_field_theme.dart';
+import 'package:shoes_shop_pos/app/utils/theme/widget_theme/text_selection_theme.dart';
 import 'package:shoes_shop_pos/app/utils/theme/widget_theme/text_theme.dart';
 
 class MyAppTheme {
@@ -14,7 +16,7 @@ class MyAppTheme {
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Poppins',
+    fontFamily: "Poppins",
     brightness: Brightness.light,
     primaryColor: Colors.blue,
     textTheme: MyTextTheme.lightTextTheme,
@@ -26,10 +28,13 @@ class MyAppTheme {
     elevatedButtonTheme: MyElevatedButtonTheme.lightElevatedButtonTheme,
     outlinedButtonTheme: MyOutlinedButtonTheme.lightOutlinedButtonTheme,
     inputDecorationTheme: MyTextFormFieldTheme.lightInputDecorationTheme,
+    textSelectionTheme: MyTextSelectionTheme.lightSelectionTheme,
+    textButtonTheme: MyTextButtonTheme.lightTextButtonTheme,
   );
+
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Poppins',
+    fontFamily: "Poppins",
     brightness: Brightness.dark,
     primaryColor: Colors.blue,
     textTheme: MyTextTheme.darkTextTheme,
@@ -41,5 +46,7 @@ class MyAppTheme {
     elevatedButtonTheme: MyElevatedButtonTheme.darkElevatedButtonTheme,
     outlinedButtonTheme: MyOutlinedButtonTheme.darkOutlinedButtonTheme,
     inputDecorationTheme: MyTextFormFieldTheme.darkInputDecorationTheme,
+    textSelectionTheme: MyTextSelectionTheme.darkSelectionTheme,
+    textButtonTheme: MyTextButtonTheme.darkTextButtonTheme,
   );
 }

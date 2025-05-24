@@ -1,19 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoes_shop_pos/app/routes/app_pages.dart';
+
+import '../../../../app/routes/app_pages.dart';
 
 class RegisterController extends GetxController {
   //TODO: Implement RegisterController
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
-  final TextEditingController nameController = TextEditingController();
 
   bool isObscure = true;
   bool isObscureConfirm = true;
 
-  void goToLogin() {
+  void toggleObscure() {
+    isObscure = !isObscure;
+    update();
+  }
+
+  void toggleObscureConfirm() {
+    isObscureConfirm = !isObscureConfirm;
+    update();
+  }
+
+  void handleRegister() {
+    print('First Name: ${firstNameController.text}');
+    print('Last Name: ${lastNameController.text}');
+    print('Email: ${emailController.text}');
+    print('Password: ${passwordController.text}');
+    print('Confirm Password: ${confirmPasswordController.text}');
+
     Get.offAllNamed(Routes.LOGIN);
   }
 

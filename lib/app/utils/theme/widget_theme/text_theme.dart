@@ -44,12 +44,12 @@ class MyTextTheme {
     ),
     bodyMedium: const TextStyle().copyWith(
       fontSize: 14.0,
-      fontWeight: FontWeight.normal,
+      fontWeight: FontWeight.w500,
       color: MyColors.dark,
     ),
     bodySmall: const TextStyle().copyWith(
       fontSize: 14.0,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.normal,
       color: MyColors.dark.withValues(alpha: 0.5),
     ),
 
@@ -59,6 +59,11 @@ class MyTextTheme {
       color: MyColors.dark,
     ),
     labelMedium: const TextStyle().copyWith(
+      fontSize: 12.0,
+      fontWeight: FontWeight.normal,
+      color: MyColors.dark.withValues(alpha: 0.5),
+    ),
+    labelSmall: const TextStyle().copyWith(
       fontSize: 12.0,
       fontWeight: FontWeight.normal,
       color: MyColors.dark.withValues(alpha: 0.5),
@@ -120,6 +125,12 @@ class MyTextTheme {
       color: MyColors.light,
     ),
     labelMedium: const TextStyle().copyWith(
+      fontSize: 12.0,
+      fontWeight: FontWeight.normal,
+      color: MyColors.light.withValues(alpha: 0.5),
+    ),
+
+    labelSmall: const TextStyle().copyWith(
       fontSize: 12.0,
       fontWeight: FontWeight.normal,
       color: MyColors.light.withValues(alpha: 0.5),

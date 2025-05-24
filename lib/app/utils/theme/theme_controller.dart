@@ -47,13 +47,11 @@ class ThemeController extends GetxController {
   void onInit() {
     super.onInit();
     themeMode = _loadThemeFromBox().obs;
-    Get.changeThemeMode(themeMode.value); // Apply theme on start
+    Get.changeThemeMode(themeMode.value);
   }
 
   @override
   void onReady() {
     super.onReady();
-    // Set the initial theme based on the saved value
-    print('Initial theme mode: ${themeMode.value}');
   }
 }

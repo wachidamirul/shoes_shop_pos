@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoes_shop_pos/app/routes/app_pages.dart';
+
+import '../../../../app/routes/app_pages.dart';
 
 class LoginController extends GetxController {
   //TODO: Implement LoginController
@@ -9,8 +10,17 @@ class LoginController extends GetxController {
 
   bool isObscure = true;
 
+  void toggleObscure() {
+    isObscure = !isObscure;
+    update();
+  }
+
   void goToRegister() {
-    Get.offAllNamed(Routes.REGISTER);
+    Get.toNamed(Routes.REGISTER);
+  }
+
+  void handleLogin() {
+    Get.offAllNamed(Routes.HOME);
   }
 
   @override

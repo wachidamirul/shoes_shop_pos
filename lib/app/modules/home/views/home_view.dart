@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:shoes_shop_pos/app/theme/font_theme.dart';
 import 'package:shoes_shop_pos/app/utils/theme/theme_controller.dart';
-import 'package:shoes_shop_pos/app/widgets/box.dart';
-import 'package:shoes_shop_pos/app/widgets/button.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -16,7 +13,7 @@ class HomeView extends GetView<HomeController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomeView', style: FontTheme.regular),
+        title: Text('HomeView'),
         actions: [
           IconButton(
             onPressed: themeController.toggleTheme,
@@ -26,13 +23,9 @@ class HomeView extends GetView<HomeController> {
       ),
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
-        child: MyBox(
-          color: Theme.of(context).colorScheme.primary,
-          child: MyButton(
-            color: Theme.of(context).colorScheme.secondary,
-            onPressed: themeController.setThemeSystem,
-            label: 'System Theme',
-          ),
+        child: Text(
+          'HomeView is working',
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
     );

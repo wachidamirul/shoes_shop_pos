@@ -38,6 +38,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   iconsax: ^0.0.8
 
+  # State Management
+  get: ^4.7.2
+  get_storage: ^2.1.1
+
   # Utility Packages
   intl: ^0.20.2
   logger: ^2.5.0
@@ -45,10 +49,7 @@ dependencies:
   lottie: ^3.3.1
   connectivity_plus: ^6.1.4
   url_launcher: ^6.3.1
-
-  # State Management
-  get: ^4.7.2
-  get_storage: ^2.1.1
+  simple_barcode_scanner: ^0.3.0
 
 
 dev_dependencies:

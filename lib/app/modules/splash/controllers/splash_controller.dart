@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:shoes_shop_pos/app/widgets/navigation_menu.dart';
+import 'package:shoes_shop_pos/app/widgets/navigation_menu/navigation_menu.dart';
 
 import '../../../../app/routes/app_pages.dart';
 

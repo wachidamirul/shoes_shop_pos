@@ -13,6 +13,7 @@ class HomeView extends GetView<HomeController> {
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('HomeView'),
         actions: [
           IconButton(
@@ -21,7 +22,6 @@ class HomeView extends GetView<HomeController> {
           ),
         ],
       ),
-      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
         child: Text(
           'HomeView is working',

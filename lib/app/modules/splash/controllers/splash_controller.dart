@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:shoes_shop_pos/app/routes/app_pages.dart';
 import 'package:shoes_shop_pos/app/widgets/navigation_menu/navigation_menu.dart';
-
-import '../../../../app/routes/app_pages.dart';
 
 class SplashController extends GetxController {
   //TODO: Implement SplashController
@@ -16,7 +15,8 @@ class SplashController extends GetxController {
     await Future.delayed(Duration(seconds: 4)).then(
       (value) => {
         // isLogin ? Get.offAllNamed(Routes.HOME) : Get.offAllNamed(Routes.LOGIN),
-        Get.to(() => MyNavigationMenu()),
+        Get.offAllNamed(Routes.LOGIN),
+        // Get.to(() => MyNavigationMenu()),
       },
     );
   }

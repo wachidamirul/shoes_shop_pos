@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shoes_shop_pos/app/widgets/navigation_menu/navigation_menu.dart';
 
 import '../../../../app/routes/app_pages.dart';
 
@@ -20,7 +21,7 @@ class LoginController extends GetxController {
   }
 
   void handleLogin() {
-    Get.offAllNamed(Routes.HOME);
+    Get.to(() => MyNavigationMenu());
   }
 
   @override

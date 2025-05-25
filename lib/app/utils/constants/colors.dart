@@ -36,7 +36,7 @@ class MyColors {
   static const Color info = Color(0xFF1976D2);
 
   // Neutral Shades
-  static const Color black = Color(0xFF232323);
+  static const Color black = Color(0xFF1D1D1D);
   static const Color darkerGrey = Color(0xFF4F4F4F);
   static const Color darkGrey = Color(0xFF939393);
   static const Color grey = Color(0xFFE0E0E0);

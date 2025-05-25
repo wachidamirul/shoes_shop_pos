@@ -1,1 +1,0 @@
-enum ObscurableField { password, confirmPassword }

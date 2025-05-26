@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
+import '../widgets/home_appbar.dart';
 import '../widgets/primary_header_container.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -10,13 +11,24 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetBuilder<HomeController>(
-        builder:
-            (c) => SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // header
+            MyPrimaryHeaderContainer(
               child: Column(
-                children: [MyPrimaryHeaderContainer(child: Container())],
+                children: [
+                  // AppBar
+                  MyHomeAppBar(),
+
+                  // Search Bar
+
+                  // Categories
+                ],
               ),
             ),
+          ],
+        ),
       ),
     );
   }

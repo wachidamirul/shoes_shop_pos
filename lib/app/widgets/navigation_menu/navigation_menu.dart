@@ -13,6 +13,7 @@ import '../../modules/store/controllers/store_controller.dart';
 import '../../modules/store/views/store_view.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/helpers/helper_functions.dart';
+import '../../utils/theme/theme_controller.dart';
 
 class MyNavigationMenu extends StatefulWidget {
   const MyNavigationMenu({super.key});
@@ -22,6 +23,8 @@ class MyNavigationMenu extends StatefulWidget {
 }
 
 class _MyNavigationMenuState extends State<MyNavigationMenu> {
+  final themeController = Get.find<ThemeController>();
+
   var currentIndex = 0.obs;
 
   getIndex() => currentIndex.value;
@@ -61,7 +64,7 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
     return Scaffold(
       body: IndexedStack(index: getIndex(), children: screenList),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: themeController.toggleTheme,
         elevation: 0,
         shape: const CircleBorder(),
         child: Container(

@@ -32,6 +32,7 @@ class MyPrimaryHeaderContainer extends StatelessWidget {
                   backgroundColor: MyColors.darkContainer,
                 ),
               ),
+              child,
             ],
           ),
         ),

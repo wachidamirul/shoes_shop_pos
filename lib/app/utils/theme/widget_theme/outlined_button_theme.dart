@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shop_pos/app/utils/constants/colors.dart';
-import 'package:shoes_shop_pos/app/utils/constants/sizes.dart';
+
+import '../../constants/colors.dart';
+import '../../constants/sizes.dart';
 
 class MyOutlinedButtonTheme {
   MyOutlinedButtonTheme._();

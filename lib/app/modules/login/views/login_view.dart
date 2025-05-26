@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../utils/styles/spacing_styles.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
 import '../../../widgets/login_register/login_register_header.dart';
-import '../widgets/form_divider.dart';
-import '../widgets/social_buttons.dart';
 import '../controllers/login_controller.dart';
+import '../widgets/form_divider.dart';
 import '../widgets/login_form.dart';
+import '../widgets/social_buttons.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({super.key});

@@ -2,17 +2,17 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_shop_pos/app/modules/home/controllers/home_controller.dart';
 
-import 'package:shoes_shop_pos/app/modules/home/views/home_view.dart';
-import 'package:shoes_shop_pos/app/modules/order/controllers/order_controller.dart';
-import 'package:shoes_shop_pos/app/modules/order/views/order_view.dart';
-import 'package:shoes_shop_pos/app/modules/product/controllers/product_controller.dart';
-import 'package:shoes_shop_pos/app/modules/product/views/product_view.dart';
-import 'package:shoes_shop_pos/app/modules/store/controllers/store_controller.dart';
-import 'package:shoes_shop_pos/app/modules/store/views/store_view.dart';
-import 'package:shoes_shop_pos/app/utils/constants/colors.dart';
-import 'package:shoes_shop_pos/app/utils/helpers/helper_functions.dart';
+import '../../modules/home/controllers/home_controller.dart';
+import '../../modules/home/views/home_view.dart';
+import '../../modules/order/controllers/order_controller.dart';
+import '../../modules/order/views/order_view.dart';
+import '../../modules/product/controllers/product_controller.dart';
+import '../../modules/product/views/product_view.dart';
+import '../../modules/store/controllers/store_controller.dart';
+import '../../modules/store/views/store_view.dart';
+import '../../utils/constants/colors.dart';
+import '../../utils/helpers/helper_functions.dart';
 
 class MyNavigationMenu extends StatefulWidget {
   const MyNavigationMenu({super.key});
@@ -22,7 +22,10 @@ class MyNavigationMenu extends StatefulWidget {
 }
 
 class _MyNavigationMenuState extends State<MyNavigationMenu> {
-  final controller = MyNavigationMenuController();
+  var currentIndex = 0.obs;
+
+  getIndex() => currentIndex.value;
+  setIndex(int index) => currentIndex.value = index;
 
   final screenList = <Widget>[
     GetBuilder<HomeController>(
@@ -56,7 +59,7 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
     final darkMode = MyHelperFunctions.isDarkMode(context);
 
     return Scaffold(
-      body: IndexedStack(index: controller.getIndex(), children: screenList),
+      body: IndexedStack(index: getIndex(), children: screenList),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         elevation: 0,
@@ -100,8 +103,8 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
           );
         },
         height: 64,
-        onTap: (index) => setState(() => controller.setIndex(index)),
-        activeIndex: controller.getIndex(),
+        onTap: (index) => setState(() => setIndex(index)),
+        activeIndex: getIndex(),
         gapLocation: GapLocation.center,
         notchSmoothness: NotchSmoothness.defaultEdge,
         leftCornerRadius: 16,
@@ -110,11 +113,4 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
       ),
     );
   }
-}
-
-class MyNavigationMenuController extends GetxController {
-  var currentIndex = 0.obs;
-
-  getIndex() => currentIndex.value;
-  setIndex(int index) => currentIndex.value = index;
 }

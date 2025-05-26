@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoes_shop_pos/app/utils/storage_utility.dart';
+
+import '../storage_utility.dart';
 
 class ThemeController extends GetxController {
   final _storage = MyLocalStorage();

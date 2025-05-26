@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shop_pos/app/utils/theme/widget_theme/text_theme.dart';
 
 import '../../constants/colors.dart';
+import 'text_theme.dart';
 
 class MyTextButtonTheme {
   MyTextButtonTheme._();

@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:shoes_shop_pos/app/routes/app_pages.dart';
+
+import '../../../routes/app_pages.dart';
 
 class SplashController extends GetxController {
   final _box = GetStorage();

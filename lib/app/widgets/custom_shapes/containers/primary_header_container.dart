@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
-import '../../../widgets/custom_shapes/containers/circular_container.dart';
-import '../../../widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
+import '../curved_edges/curved_edges_widget.dart';
+import 'circular_container.dart';
 
 class MyPrimaryHeaderContainer extends StatelessWidget {
   const MyPrimaryHeaderContainer({super.key, required this.child});

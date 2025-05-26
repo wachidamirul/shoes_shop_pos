@@ -2,10 +2,14 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shoes_shop_pos/app/modules/home/controllers/home_controller.dart';
 
 import 'package:shoes_shop_pos/app/modules/home/views/home_view.dart';
+import 'package:shoes_shop_pos/app/modules/order/controllers/order_controller.dart';
 import 'package:shoes_shop_pos/app/modules/order/views/order_view.dart';
+import 'package:shoes_shop_pos/app/modules/product/controllers/product_controller.dart';
 import 'package:shoes_shop_pos/app/modules/product/views/product_view.dart';
+import 'package:shoes_shop_pos/app/modules/store/controllers/store_controller.dart';
 import 'package:shoes_shop_pos/app/modules/store/views/store_view.dart';
 import 'package:shoes_shop_pos/app/utils/constants/colors.dart';
 import 'package:shoes_shop_pos/app/utils/helpers/helper_functions.dart';
@@ -19,12 +23,26 @@ class MyNavigationMenu extends StatefulWidget {
 
 class _MyNavigationMenuState extends State<MyNavigationMenu> {
   final controller = MyNavigationMenuController();
+
   final screenList = <Widget>[
-    const HomeView(),
-    const OrderView(),
-    const ProductView(),
-    const StoreView(),
+    GetBuilder<HomeController>(
+      init: HomeController(),
+      builder: (_) => const HomeView(),
+    ),
+    GetBuilder<OrderController>(
+      init: OrderController(),
+      builder: (_) => const OrderView(),
+    ),
+    GetBuilder<ProductController>(
+      init: ProductController(),
+      builder: (_) => const ProductView(),
+    ),
+    GetBuilder<StoreController>(
+      init: StoreController(),
+      builder: (_) => const StoreView(),
+    ),
   ];
+
   final iconList = <IconData>[
     Iconsax.home_2,
     Iconsax.document_text,
@@ -42,10 +60,20 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         elevation: 0,
-        backgroundColor: MyColors.primary,
-        foregroundColor: MyColors.softGrey,
         shape: const CircleBorder(),
-        child: Icon(Iconsax.scan),
+        child: Container(
+          width: 60,
+          height: 60,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              colors: [MyColors.primary, Colors.blue.shade300],
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+            ),
+          ),
+          child: Icon(Iconsax.scan, size: 28),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(

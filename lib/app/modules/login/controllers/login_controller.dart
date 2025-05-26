@@ -21,7 +21,8 @@ class LoginController extends GetxController {
   }
 
   void handleLogin() {
-    Get.to(() => MyNavigationMenu());
+    // Get.to(() => MyNavigationMenu());
+    Get.offAll(() => MyNavigationMenu());
   }
 
   @override

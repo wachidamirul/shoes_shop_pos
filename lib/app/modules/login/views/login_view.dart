@@ -16,11 +16,12 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: GetBuilder<LoginController>(
         builder:
             (c) => SingleChildScrollView(
               child: Padding(
-                padding: MySpacingStyle.paddingWithAppBarHeight,
+                padding: EdgeInsets.all(MySizes.defaultSpace),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

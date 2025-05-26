@@ -72,7 +72,7 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
               end: Alignment.topRight,
             ),
           ),
-          child: Icon(Iconsax.scan, size: 28),
+          child: Icon(Iconsax.scan, size: 28, color: MyColors.softGrey),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

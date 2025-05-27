@@ -3,12 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'package:shoes_shop_pos/app/modules/home/views/home_view.dart';
-import 'package:shoes_shop_pos/app/modules/order/views/order_view.dart';
-import 'package:shoes_shop_pos/app/modules/product/views/product_view.dart';
-import 'package:shoes_shop_pos/app/modules/store/views/store_view.dart';
-import 'package:shoes_shop_pos/app/utils/constants/colors.dart';
-import 'package:shoes_shop_pos/app/utils/helpers/helper_functions.dart';
+import '../../modules/home/controllers/home_controller.dart';
+import '../../modules/home/views/home_view.dart';
+import '../../modules/order/controllers/order_controller.dart';
+import '../../modules/order/views/order_view.dart';
+import '../../modules/product/controllers/product_controller.dart';
+import '../../modules/product/views/product_view.dart';
+import '../../modules/store/controllers/store_controller.dart';
+import '../../modules/store/views/store_view.dart';
+import '../../utils/constants/colors.dart';
+import '../../utils/helpers/helper_functions.dart';
+import '../../utils/theme/theme_controller.dart';
 
 class MyNavigationMenu extends StatefulWidget {
   const MyNavigationMenu({super.key});
@@ -18,13 +23,32 @@ class MyNavigationMenu extends StatefulWidget {
 }
 
 class _MyNavigationMenuState extends State<MyNavigationMenu> {
-  final controller = MyNavigationMenuController();
+  final themeController = Get.find<ThemeController>();
+
+  var currentIndex = 0.obs;
+
+  getIndex() => currentIndex.value;
+  setIndex(int index) => currentIndex.value = index;
+
   final screenList = <Widget>[
-    const HomeView(),
-    const OrderView(),
-    const ProductView(),
-    const StoreView(),
+    GetBuilder<HomeController>(
+      init: HomeController(),
+      builder: (_) => const HomeView(),
+    ),
+    GetBuilder<OrderController>(
+      init: OrderController(),
+      builder: (_) => const OrderView(),
+    ),
+    GetBuilder<ProductController>(
+      init: ProductController(),
+      builder: (_) => const ProductView(),
+    ),
+    GetBuilder<StoreController>(
+      init: StoreController(),
+      builder: (_) => const StoreView(),
+    ),
   ];
+
   final iconList = <IconData>[
     Iconsax.home_2,
     Iconsax.document_text,
@@ -38,14 +62,24 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
     final darkMode = MyHelperFunctions.isDarkMode(context);
 
     return Scaffold(
-      body: IndexedStack(index: controller.getIndex(), children: screenList),
+      body: IndexedStack(index: getIndex(), children: screenList),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: themeController.toggleTheme,
         elevation: 0,
-        backgroundColor: MyColors.primary,
-        foregroundColor: MyColors.softGrey,
         shape: const CircleBorder(),
-        child: Icon(Iconsax.scan),
+        child: Container(
+          width: 60,
+          height: 60,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              colors: [MyColors.primary, Colors.blue.shade300],
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+            ),
+          ),
+          child: Icon(Iconsax.scan, size: 28, color: MyColors.softGrey),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
@@ -72,8 +106,8 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
           );
         },
         height: 64,
-        onTap: (index) => setState(() => controller.setIndex(index)),
-        activeIndex: controller.getIndex(),
+        onTap: (index) => setState(() => setIndex(index)),
+        activeIndex: getIndex(),
         gapLocation: GapLocation.center,
         notchSmoothness: NotchSmoothness.defaultEdge,
         leftCornerRadius: 16,
@@ -82,11 +116,4 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
       ),
     );
   }
-}
-
-class MyNavigationMenuController extends GetxController {
-  var currentIndex = 0.obs;
-
-  getIndex() => currentIndex.value;
-  setIndex(int index) => currentIndex.value = index;
 }

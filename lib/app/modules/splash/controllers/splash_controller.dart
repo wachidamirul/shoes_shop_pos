@@ -1,10 +1,9 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:shoes_shop_pos/app/routes/app_pages.dart';
-import 'package:shoes_shop_pos/app/widgets/navigation_menu/navigation_menu.dart';
+
+import '../../../routes/app_pages.dart';
 
 class SplashController extends GetxController {
-  //TODO: Implement SplashController
   final _box = GetStorage();
   final _key = 'is_login';
 
@@ -16,7 +15,6 @@ class SplashController extends GetxController {
       (value) => {
         // isLogin ? Get.offAllNamed(Routes.HOME) : Get.offAllNamed(Routes.LOGIN),
         Get.offAllNamed(Routes.LOGIN),
-        // Get.to(() => MyNavigationMenu()),
       },
     );
   }

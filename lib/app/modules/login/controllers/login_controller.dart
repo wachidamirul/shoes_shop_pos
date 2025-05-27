@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoes_shop_pos/app/widgets/navigation_menu/navigation_menu.dart';
 
 import '../../../../app/routes/app_pages.dart';
+import '../../../widgets/navigation_menu/navigation_menu.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -21,7 +20,7 @@ class LoginController extends GetxController {
   }
 
   void handleLogin() {
-    Get.to(() => MyNavigationMenu());
+    Get.offAll(() => MyNavigationMenu());
   }
 
   @override

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+
+import '../storage_utility.dart';
 
 class ThemeController extends GetxController {
-  final _box = GetStorage();
+  final _storage = MyLocalStorage();
   final _key = 'theme_mode';
 
   // Reactive themeMode
   late final Rx<ThemeMode> themeMode;
 
   ThemeMode _loadThemeFromBox() {
-    String? themeText = _box.read(_key);
+    String? themeText = _storage.readData<String>(_key);
     switch (themeText) {
       case 'light':
         return ThemeMode.light;
@@ -22,7 +23,7 @@ class ThemeController extends GetxController {
   }
 
   void _saveThemeToBox(String themeText) {
-    _box.write(_key, themeText);
+    _storage.saveData<String>(_key, themeText);
   }
 
   void toggleTheme() {

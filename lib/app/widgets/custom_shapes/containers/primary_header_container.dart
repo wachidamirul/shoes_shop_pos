@@ -5,15 +5,20 @@ import '../curved_edges/curved_edges_widget.dart';
 import 'circular_container.dart';
 
 class MyPrimaryHeaderContainer extends StatelessWidget {
-  const MyPrimaryHeaderContainer({super.key, required this.child});
+  const MyPrimaryHeaderContainer({
+    super.key,
+    this.height = 200,
+    required this.child,
+  });
 
+  final double? height;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return MyCurvedEdgeWidget(
       child: SizedBox(
-        height: 400,
+        height: height,
         child: Container(
           color: MyColors.primary,
           child: Stack(

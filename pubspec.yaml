@@ -109,6 +109,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/categories/
     - assets/fonts/
     - assets/lottie/
     - assets/vectors/

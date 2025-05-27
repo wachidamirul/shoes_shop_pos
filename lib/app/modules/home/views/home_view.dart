@@ -9,6 +9,7 @@ import '../../../widgets/custom_shapes/containers/search_container.dart';
 import '../../../widgets/texts/section_heading.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/home_appbar.dart';
+import '../widgets/home_categories.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -21,14 +22,18 @@ class HomeView extends GetView<HomeController> {
           children: [
             // header
             MyPrimaryHeaderContainer(
+              height: 400,
               child: Column(
                 children: [
                   // -- AppBar
                   MyHomeAppBar(),
-                  const SizedBox(height: MySizes.spaceBtwSections),
+                  const SizedBox(height: MySizes.spaceBtwSections / 2),
 
                   // -- Search Bar
                   MySearchContainer(
+                    onTap: () {
+                      print("Search tapped");
+                    },
                     textHint: 'Search for products',
                     icon: Iconsax.search_normal,
                     showBackground: true,
@@ -48,6 +53,9 @@ class HomeView extends GetView<HomeController> {
                           showActionButton: false,
                         ),
                         const SizedBox(height: MySizes.spaceBtwItems),
+
+                        // -- Categories List
+                        MyHomeCategories(),
                       ],
                     ),
                   ),

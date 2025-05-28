@@ -6,6 +6,7 @@ import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
 import '../../../widgets/custom_shapes/containers/primary_header_container.dart';
+import '../../../widgets/products/cards/product_card_vertical.dart';
 import '../../../widgets/custom_shapes/containers/search_container.dart';
 import '../../../widgets/texts/section_heading.dart';
 import '../controllers/home_controller.dart';
@@ -21,9 +22,9 @@ class HomeView extends GetView<HomeController> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // header
+            // -- Header
             MyPrimaryHeaderContainer(
-              height: 400,
+              key: const Key("home_header"),
               child: Column(
                 children: [
                   // -- AppBar
@@ -60,6 +61,20 @@ class HomeView extends GetView<HomeController> {
                       ],
                     ),
                   ),
+                  const SizedBox(height: MySizes.spaceBtwSections),
+                ],
+              ),
+            ),
+
+            // -- Body
+            Padding(
+              padding: EdgeInsets.all(MySizes.defaultSpace),
+              child: Column(
+                children: [
+                  // -- Banner Section
+
+                  // -- Products Section
+                  MyProductCardVertical(),
                 ],
               ),
             ),

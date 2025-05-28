@@ -22,10 +22,10 @@ class MyCartCounterIcon extends StatelessWidget {
           icon: const Icon(Iconsax.shopping_bag, color: MyColors.white),
         ),
         Positioned(
-          right: 0,
+          right: 0.0,
           child: Container(
-            width: 18,
-            height: 18,
+            width: 18.0,
+            height: 18.0,
             decoration: BoxDecoration(
               color: MyColors.black,
               borderRadius: BorderRadius.circular(100),

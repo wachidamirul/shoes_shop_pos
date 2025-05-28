@@ -32,4 +32,11 @@ class MyTexts {
   static const String confirmPassword = "Confirm Password";
   static const String confirmPasswordHint = "Re-enter your password";
   static const String confirmPasswordError = "Password does not match";
+
+  // -- Home Screen
+  static const String homeTitle = "Home";
+  static const String homeSubTitle = "This is subtitle";
+  static const String searchProducts = "Search for products";
+  static const String categories = "Categories";
+  static const String viewAll = "View All";
 }

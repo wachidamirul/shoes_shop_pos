@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
+import '../../../utils/constants/text_strings.dart';
 import '../../../widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../widgets/custom_shapes/containers/search_container.dart';
 import '../../../widgets/texts/section_heading.dart';
@@ -34,7 +35,7 @@ class HomeView extends GetView<HomeController> {
                     onTap: () {
                       print("Search tapped");
                     },
-                    textHint: 'Search for products',
+                    textHint: MyTexts.searchProducts,
                     icon: Iconsax.search_normal,
                     showBackground: true,
                     showBorder: true,
@@ -48,7 +49,7 @@ class HomeView extends GetView<HomeController> {
                       children: [
                         // -- Section Heading
                         MySectionHeading(
-                          title: "Categories",
+                          title: MyTexts.categories,
                           textColor: MyColors.white,
                           showActionButton: false,
                         ),

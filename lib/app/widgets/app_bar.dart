@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -44,6 +45,11 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 : null,
         title: title,
         actions: actions,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.light,
+        ),
       ),
     );
   }

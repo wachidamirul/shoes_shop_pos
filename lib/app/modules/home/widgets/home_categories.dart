@@ -1,28 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/image_strings.dart';
+import '../../../utils/constants/list_data.dart';
 import '../../../widgets/texts/image_text.dart';
 
 class MyHomeCategories extends StatelessWidget {
   const MyHomeCategories({super.key});
 
-  final List<String> categories = const [
-    'Men',
-    'Women',
-    'Casual',
-    'Sport',
-    'Boots',
-  ];
-
-  // List of images corresponding to the categories
-  final List<String> images = const [
-    MyImages.men,
-    MyImages.women,
-    MyImages.casual,
-    MyImages.sport,
-    MyImages.boots,
-  ];
+  final List<String> categories = MyListData.categories;
+  final List<String> images = MyListData.imageCategories;
 
   @override
   Widget build(BuildContext context) {

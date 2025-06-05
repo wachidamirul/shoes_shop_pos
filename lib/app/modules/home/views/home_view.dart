@@ -25,7 +25,6 @@ class HomeView extends GetView<HomeController> {
           children: [
             // -- Header
             MyPrimaryHeaderContainer(
-              key: const Key("home_header"),
               child: Column(
                 children: [
                   // -- AppBar
@@ -69,7 +68,7 @@ class HomeView extends GetView<HomeController> {
 
             // -- Body
             Padding(
-              padding: EdgeInsets.all(MySizes.defaultSpace),
+              padding: EdgeInsets.all(MySizes.gridViewSpacing),
               child: Column(
                 children: [
                   // -- Banner Section
@@ -77,7 +76,6 @@ class HomeView extends GetView<HomeController> {
                   // -- Products Section
                   MyGridLayout(
                     itemCount: 4,
-                    mainAxisExtent: 271,
                     itemBuilder: (_, index) {
                       return const MyProductCardVertical();
                     },

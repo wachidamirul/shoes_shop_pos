@@ -9,8 +9,8 @@ import '../../modules/home/controllers/home_controller.dart';
 import '../../modules/home/views/home_view.dart';
 import '../../modules/product/controllers/product_controller.dart';
 import '../../modules/product/views/product_view.dart';
-import '../../modules/store/controllers/store_controller.dart';
-import '../../modules/store/views/store_view.dart';
+import '../../modules/profile/controllers/profile_controller.dart';
+import '../../modules/profile/views/profile_view.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/helpers/helper_functions.dart';
 import '../../utils/theme/theme_controller.dart';
@@ -43,9 +43,9 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
       init: ProductController(),
       builder: (_) => const ProductView(),
     ),
-    GetBuilder<StoreController>(
-      init: StoreController(),
-      builder: (_) => const StoreView(),
+    GetBuilder<ProfileController>(
+      init: ProfileController(),
+      builder: (_) => const ProfileView(),
     ),
   ];
 

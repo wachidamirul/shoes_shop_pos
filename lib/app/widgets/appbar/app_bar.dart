@@ -3,8 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../utils/constants/sizes.dart';
-import '../utils/device_utility.dart';
+import '../../utils/constants/sizes.dart';
+import '../../utils/device_utility.dart';
+import '../../utils/helpers/helper_functions.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({
@@ -14,16 +15,19 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.leadingIcon,
     this.leadingOnPressed,
     this.showbackArrow = false,
+    this.lightSystemOverlayStyle = false,
   });
 
   final Widget? title;
-  final bool showbackArrow;
+  final bool showbackArrow, lightSystemOverlayStyle;
   final IconData? leadingIcon;
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
 
   @override
   Widget build(BuildContext context) {
+    final dark = MyHelperFunctions.isDarkMode(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: MySizes.md,
@@ -47,8 +51,18 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         actions: actions,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness:
+              lightSystemOverlayStyle
+                  ? Brightness.dark
+                  : dark
+                  ? Brightness.light
+                  : Brightness.dark,
+          statusBarIconBrightness:
+              lightSystemOverlayStyle
+                  ? Brightness.light
+                  : dark
+                  ? Brightness.light
+                  : Brightness.dark,
         ),
       ),
     );

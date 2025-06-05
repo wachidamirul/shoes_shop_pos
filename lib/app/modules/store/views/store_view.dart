@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 import '../controllers/store_controller.dart';
@@ -11,10 +12,12 @@ class StoreView extends GetView<StoreController> {
       appBar: AppBar(
         title: const Text('StoreView'),
         centerTitle: true,
-        automaticallyImplyLeading: false,
       ),
       body: const Center(
-        child: Text('StoreView is working', style: TextStyle(fontSize: 20)),
+        child: Text(
+          'StoreView is working',
+          style: TextStyle(fontSize: 20),
+        ),
       ),
     );
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/text_strings.dart';
-import '../../../widgets/app_bar.dart';
+import '../../../widgets/appbar/app_bar.dart';
 import '../../../widgets/products/cart/cart_menu_icon.dart';
 
 class MyHomeAppBar extends StatelessWidget {
@@ -11,6 +11,7 @@ class MyHomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyAppBar(
+      lightSystemOverlayStyle: true,
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -28,14 +29,7 @@ class MyHomeAppBar extends StatelessWidget {
           ),
         ],
       ),
-      actions: [
-        MyCartCounterIcon(
-          onPressed: () {
-            // Handle cart icon press
-          },
-          iconColor: MyColors.white,
-        ),
-      ],
+      actions: [MyCartCounterIcon(onPressed: () {}, isIconLight: true)],
     );
   }
 }

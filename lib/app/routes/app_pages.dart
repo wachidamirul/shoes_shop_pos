@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 
+import '../modules/analytic/bindings/analytic_binding.dart';
+import '../modules/analytic/views/analytic_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
-import '../modules/order/bindings/order_binding.dart';
-import '../modules/order/views/order_view.dart';
 import '../modules/product/bindings/product_binding.dart';
 import '../modules/product/views/product_view.dart';
 import '../modules/register/bindings/register_binding.dart';
@@ -40,14 +40,14 @@ class AppPages {
       binding: RegisterBinding(),
     ),
     GetPage(
-      name: _Paths.ORDER,
-      page: () => const OrderView(),
-      binding: OrderBinding(),
-    ),
-    GetPage(
       name: _Paths.PRODUCT,
       page: () => const ProductView(),
       binding: ProductBinding(),
+    ),
+    GetPage(
+      name: _Paths.ANALYTIC,
+      page: () => const AnalyticView(),
+      binding: AnalyticBinding(),
     ),
     GetPage(
       name: _Paths.STORE,

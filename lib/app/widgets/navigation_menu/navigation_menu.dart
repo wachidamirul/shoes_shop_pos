@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../modules/analytic/controllers/analytic_controller.dart';
+import '../../modules/analytic/views/analytic_view.dart';
 import '../../modules/home/controllers/home_controller.dart';
 import '../../modules/home/views/home_view.dart';
-import '../../modules/order/controllers/order_controller.dart';
-import '../../modules/order/views/order_view.dart';
 import '../../modules/product/controllers/product_controller.dart';
 import '../../modules/product/views/product_view.dart';
 import '../../modules/store/controllers/store_controller.dart';
@@ -35,9 +35,9 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
       init: HomeController(),
       builder: (_) => const HomeView(),
     ),
-    GetBuilder<OrderController>(
-      init: OrderController(),
-      builder: (_) => const OrderView(),
+    GetBuilder<AnalyticController>(
+      init: AnalyticController(),
+      builder: (_) => const AnalyticView(),
     ),
     GetBuilder<ProductController>(
       init: ProductController(),
@@ -51,11 +51,11 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
 
   final iconList = <IconData>[
     Iconsax.shop,
-    Iconsax.document_text,
+    Iconsax.chart,
     Iconsax.box,
     Iconsax.user,
   ];
-  final iconStrings = <String>['Store', 'Order', 'Product', 'Profile'];
+  final iconStrings = <String>['Store', 'Analytic', 'Product', 'Profile'];
 
   @override
   Widget build(BuildContext context) {

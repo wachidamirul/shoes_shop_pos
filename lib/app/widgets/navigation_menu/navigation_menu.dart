@@ -50,12 +50,12 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
   ];
 
   final iconList = <IconData>[
-    Iconsax.home_2,
+    Iconsax.shop,
     Iconsax.document_text,
     Iconsax.box,
-    Iconsax.shop,
+    Iconsax.user,
   ];
-  final iconStrings = <String>['Home', 'Order', 'Product', 'Store'];
+  final iconStrings = <String>['Store', 'Order', 'Product', 'Profile'];
 
   @override
   Widget build(BuildContext context) {

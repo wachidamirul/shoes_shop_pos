@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/text_strings.dart';
 import '../../../widgets/app_bar.dart';
-import '../../../widgets/cart_menu_icon.dart';
+import '../../../widgets/products/cart/cart_menu_icon.dart';
 
 class MyHomeAppBar extends StatelessWidget {
   const MyHomeAppBar({super.key});

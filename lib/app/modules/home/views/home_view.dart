@@ -6,6 +6,7 @@ import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
 import '../../../widgets/custom_shapes/containers/primary_header_container.dart';
+import '../../../widgets/layouts/grid_layout.dart';
 import '../../../widgets/products/cards/product_card_vertical.dart';
 import '../../../widgets/custom_shapes/containers/search_container.dart';
 import '../../../widgets/texts/section_heading.dart';
@@ -74,7 +75,13 @@ class HomeView extends GetView<HomeController> {
                   // -- Banner Section
 
                   // -- Products Section
-                  MyProductCardVertical(),
+                  MyGridLayout(
+                    itemCount: 4,
+                    mainAxisExtent: 271,
+                    itemBuilder: (_, index) {
+                      return const MyProductCardVertical();
+                    },
+                  ),
                 ],
               ),
             ),

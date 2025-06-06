@@ -85,10 +85,16 @@ class AnalyticView extends GetView<AnalyticController> {
                 bottom: MyTabBar(
                   controller: controller.tabController,
                   tabs: [
-                    Tab(child: Text("Daily")),
-                    Tab(child: Text("Weekly")),
-                    Tab(child: Text("Monthly")),
-                    Tab(child: Text("Yearly")),
+                    Tab(child: Text("Today", style: TextStyle(fontSize: 13))),
+                    Tab(
+                      child: Text("This Week", style: TextStyle(fontSize: 13)),
+                    ),
+                    Tab(
+                      child: Text("This Month", style: TextStyle(fontSize: 13)),
+                    ),
+                    Tab(
+                      child: Text("This Year", style: TextStyle(fontSize: 13)),
+                    ),
                   ],
                 ),
               ),

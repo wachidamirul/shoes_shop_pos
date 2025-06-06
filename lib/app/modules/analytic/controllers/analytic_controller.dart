@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 class AnalyticController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  var timeFrameItem = ["Daily", "Weekly", "Monthly", "Yearly"];
-  RxString valTimeFrame = "Daily".obs;
+  var timeFrameItem = ["Today", "This Week", "This Month", "This Year"];
+  RxString valTimeFrame = "Today".obs;
   RxInt tabBarPosition = 0.obs;
   late TabController tabController;
 

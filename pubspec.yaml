@@ -52,6 +52,8 @@ dependencies:
   simple_barcode_scanner: ^0.3.0
   animated_bottom_navigation_bar: ^1.4.0
   flutter_launcher_icons: ^0.14.3
+  flutter_dotenv: ^5.2.1
+  supabase_flutter: ^2.9.0
 
 
 dev_dependencies:
@@ -107,6 +109,7 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
   assets:
+    - .env
     - assets/
     - assets/images/
     - assets/images/categories/

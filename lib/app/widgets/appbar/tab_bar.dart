@@ -5,8 +5,9 @@ import '../../utils/device_utility.dart';
 import '../../utils/helpers/helper_functions.dart';
 
 class MyTabBar extends StatelessWidget implements PreferredSizeWidget {
-  const MyTabBar({super.key, required this.tabs});
+  const MyTabBar({super.key, required this.tabs, this.controller});
 
+  final TabController? controller;
   final List<Tab> tabs;
 
   @override
@@ -16,11 +17,12 @@ class MyTabBar extends StatelessWidget implements PreferredSizeWidget {
     return Material(
       color: dark ? MyColors.dark : MyColors.light,
       child: TabBar(
-        isScrollable: true,
+        // isScrollable: true,
+        controller: controller,
         indicatorColor: MyColors.primary,
         labelColor: dark ? MyColors.white : MyColors.primary,
         unselectedLabelColor: MyColors.darkGrey,
-        tabAlignment: TabAlignment.start,
+        tabAlignment: TabAlignment.fill,
         tabs: tabs,
       ),
     );

@@ -1,12 +1,19 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AnalyticController extends GetxController {
+class AnalyticController extends GetxController
+    with GetSingleTickerProviderStateMixin {
   var timeFrameItem = ["Daily", "Weekly", "Monthly", "Yearly"];
   RxString valTimeFrame = "Daily".obs;
+  RxInt tabBarPosition = 0.obs;
+  late TabController tabController;
 
   void setTimeFrame(newValue) {
     if (newValue != null && timeFrameItem.contains(newValue)) {
       valTimeFrame.value = newValue;
+      int idx = timeFrameItem.indexOf(newValue);
+      tabBarPosition.value = idx;
+      tabController.animateTo(idx);
     } else {
       print("Invalid time frame selected.");
     }
@@ -14,16 +21,18 @@ class AnalyticController extends GetxController {
 
   @override
   void onInit() {
+    tabController = TabController(length: timeFrameItem.length, vsync: this);
+    tabController.addListener(() {
+      if (tabController.indexIsChanging) return;
+      valTimeFrame.value = timeFrameItem[tabController.index];
+      tabBarPosition.value = tabController.index;
+    });
     super.onInit();
   }
 
   @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
   void onClose() {
+    tabController.dispose();
     super.onClose();
   }
 }

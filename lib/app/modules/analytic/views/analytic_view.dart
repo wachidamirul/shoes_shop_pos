@@ -23,7 +23,7 @@ class AnalyticView extends GetView<AnalyticController> {
               SliverAppBar(
                 pinned: true,
                 floating: true,
-                expandedHeight: 230,
+                expandedHeight: 210,
                 automaticallyImplyLeading: false,
                 flexibleSpace: Padding(
                   padding: const EdgeInsets.all(MySizes.defaultSpace),
@@ -56,6 +56,12 @@ class AnalyticView extends GetView<AnalyticController> {
                               focusColor: Colors.transparent,
                               dropdownColor:
                                   dark ? MyColors.black : MyColors.light,
+                              style: Theme.of(
+                                context,
+                              ).textTheme.bodySmall?.copyWith(
+                                fontSize: MySizes.fontSizeSm,
+                                color: dark ? MyColors.white : MyColors.dark,
+                              ),
                             ),
                           ),
                         ),
@@ -77,17 +83,46 @@ class AnalyticView extends GetView<AnalyticController> {
 
                 // -- TabBar
                 bottom: MyTabBar(
+                  controller: controller.tabController,
                   tabs: [
-                    Tab(text: "Today"),
-                    Tab(text: "This Week"),
-                    Tab(text: "This Month"),
-                    Tab(text: "This Year"),
+                    Tab(child: Text("Daily")),
+                    Tab(child: Text("Weekly")),
+                    Tab(child: Text("Monthly")),
+                    Tab(child: Text("Yearly")),
                   ],
                 ),
               ),
             ];
           },
-          body: Container(),
+          body: TabBarView(
+            controller: controller.tabController,
+            children: [
+              Center(
+                child: Text(
+                  "Daily Sales Data",
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ),
+              Center(
+                child: Text(
+                  "Weekly Sales Data",
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ),
+              Center(
+                child: Text(
+                  "Monthly Sales Data",
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ),
+              Center(
+                child: Text(
+                  "Yearly Sales Data",
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

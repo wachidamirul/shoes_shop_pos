@@ -34,7 +34,7 @@ class MyProductCardVertical extends StatelessWidget {
           children: [
             // -- Thumbnail
             MyRoundedContainer(
-              height: 171,
+              height: 180,
               padding: const EdgeInsets.all(MySizes.xs),
               showBorder: true,
               borderColor: dark ? MyColors.black : MyColors.light,
@@ -53,28 +53,6 @@ class MyProductCardVertical extends StatelessWidget {
                         dark
                             ? MyColors.dark.withValues(alpha: 0.8)
                             : MyColors.light.withValues(alpha: 0.8),
-                  ),
-
-                  // -- Tag
-                  Positioned(
-                    top: 8,
-                    left: 8,
-                    child: MyRoundedContainer(
-                      radius: MySizes.sm,
-                      backgroundColor: MyColors.secondary.withValues(
-                        alpha: 0.8,
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: MySizes.sm,
-                        vertical: MySizes.xs,
-                      ),
-                      child: Text(
-                        "25%",
-                        style: Theme.of(
-                          context,
-                        ).textTheme.labelLarge!.apply(color: MyColors.black),
-                      ),
-                    ),
                   ),
                 ],
               ),
@@ -98,20 +76,7 @@ class MyProductCardVertical extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
 
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          MyProductPriceText(
-                            price: "\$47,33",
-                            isLarge: false,
-                            lineThrough: true,
-                          ),
-                          const MyProductPriceText(
-                            price: "\$35.5",
-                            isLarge: true,
-                          ),
-                        ],
-                      ),
+                      const MyProductPriceText(price: "\$35.5", isLarge: true),
                       Container(
                         decoration: const BoxDecoration(
                           color: MyColors.primary,
@@ -123,8 +88,8 @@ class MyProductCardVertical extends StatelessWidget {
                           ),
                         ),
                         child: SizedBox(
-                          width: MySizes.iconLg * 1.3,
-                          height: MySizes.iconLg * 1.3,
+                          width: MySizes.iconLg * 1.2,
+                          height: MySizes.iconLg * 1.2,
                           child: Center(
                             child: Icon(Iconsax.add, color: MyColors.white),
                           ),

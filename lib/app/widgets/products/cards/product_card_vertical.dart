@@ -35,7 +35,9 @@ class MyProductCardVertical extends StatelessWidget {
             // -- Thumbnail
             MyRoundedContainer(
               height: 171,
-              padding: const EdgeInsets.all(MySizes.sm),
+              padding: const EdgeInsets.all(MySizes.xs),
+              showBorder: true,
+              borderColor: dark ? MyColors.black : MyColors.light,
               backgroundColor: dark ? MyColors.dark : MyColors.light,
               child: Stack(
                 children: [

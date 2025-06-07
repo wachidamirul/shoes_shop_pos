@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -9,9 +12,8 @@ import '../../../widgets/navigation_menu/navigation_menu.dart';
 
 class LoginController extends GetxController {
   final authService = AuthService();
-
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   bool isObscure = true;
 
@@ -20,16 +22,17 @@ class LoginController extends GetxController {
     update();
   }
 
-  void goToRegister() {
-    Get.toNamed(Routes.REGISTER);
-  }
+  void goToRegister() => Get.toNamed(Routes.REGISTER);
 
   void handleLogin() async {
-    final email = emailController.text;
+    final email = emailController.text.trim();
     final password = passwordController.text;
 
     if (email.isEmpty || password.isEmpty) {
-      MyLoaders.errorSnackBar(title: 'Error', message: "Input is required");
+      MyLoaders.errorSnackBar(
+        title: 'Error',
+        message: "email and password cannot be empty",
+      );
       return;
     }
 
@@ -41,22 +44,22 @@ class LoginController extends GetxController {
     } on AuthException catch (e) {
       MyLoaders.errorSnackBar(title: 'Error', message: e.message);
     } catch (e) {
-      MyLoaders.errorSnackBar(title: 'Error', message: e);
+      MyLoaders.errorSnackBar(title: 'Error', message: e.toString());
     }
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  void handleGoogleSignIn() async {
+    try {
+      await authService.nativeGoogleSignIn();
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
+      final currentUser = authService.currentUser;
+      if (currentUser != null) {
+        Get.offAll(() => MyNavigationMenu());
+      }
+    } on AuthException catch (e) {
+      MyLoaders.errorSnackBar(title: 'Error', message: e.message);
+    } catch (e) {
+      MyLoaders.errorSnackBar(title: 'Error', message: e.toString());
+    }
   }
 }

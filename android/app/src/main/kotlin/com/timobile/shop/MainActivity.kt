@@ -1,4 +1,4 @@
-package com.shoesshop.pos.shoes_shop_pos
+package com.timobile.shop
 
 import io.flutter.embedding.android.FlutterActivity
 

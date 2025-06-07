@@ -5,7 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'app/routes/app_pages.dart';
-import 'app/services/api_service.dart';
+import 'app/services/env_service.dart';
 import 'app/utils/theme/theme.dart';
 import 'app/utils/theme/theme_controller.dart';
 
@@ -18,8 +18,8 @@ void main() async {
   }
 
   await Supabase.initialize(
-    url: ApiService.supabaseUrl,
-    anonKey: ApiService.supabaseKey,
+    url: EnvService.supabaseUrl,
+    anonKey: EnvService.supabaseKey,
   );
 
   await GetStorage.init();

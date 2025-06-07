@@ -4,9 +4,12 @@ import 'package:flutter_svg/svg.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
+import '../controllers/login_controller.dart';
 
 class MySocialButtons extends StatelessWidget {
-  const MySocialButtons({super.key});
+  const MySocialButtons({super.key, required this.controller});
+
+  final LoginController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class MySocialButtons extends StatelessWidget {
             borderRadius: BorderRadius.circular(100),
           ),
           child: IconButton(
-            onPressed: () {},
+            onPressed: controller.handleGoogleSignIn,
             icon: SvgPicture.asset(MyImages.google, width: 16, height: 16),
           ),
         ),

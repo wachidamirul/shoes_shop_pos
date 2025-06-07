@@ -24,6 +24,8 @@ class MyAppBarTheme {
       statusBarColor: Colors.transparent,
       statusBarBrightness: Brightness.light,
       statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
 
@@ -47,6 +49,8 @@ class MyAppBarTheme {
       statusBarColor: Colors.transparent,
       statusBarBrightness: Brightness.dark,
       statusBarIconBrightness: Brightness.light,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.light,
     ),
   );
 }

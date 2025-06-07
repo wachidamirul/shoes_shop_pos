@@ -26,7 +26,9 @@ class AnalyticView extends GetView<AnalyticController> {
                 expandedHeight: 210,
                 automaticallyImplyLeading: false,
                 flexibleSpace: Padding(
-                  padding: const EdgeInsets.all(MySizes.defaultSpace),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: MySizes.defaultSpace,
+                  ),
                   child: ListView(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),

@@ -7,10 +7,12 @@ import '../../../utils/constants/sizes.dart';
 import '../../../utils/device_utility.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../../../utils/theme/theme_controller.dart';
+import '../../../widgets/appbar/app_bar.dart';
 import '../../../widgets/custom_shapes/containers/circular_container.dart';
 import '../../../widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../widgets/texts/section_heading.dart';
 import '../controllers/profile_controller.dart';
+import '../widgets/app_bar_profile.dart';
 
 class ProfileView extends GetView<ProfileController> {
   const ProfileView({super.key});
@@ -26,7 +28,8 @@ class ProfileView extends GetView<ProfileController> {
             MyPrimaryHeaderContainer(
               child: Column(
                 children: [
-                  SizedBox(height: MyDeviceUtils.getStatusBarHeight() + 10),
+                  // -- AppBar
+                  MyAppBarProfile(lightSystemOverlayStyle: true),
                   // -- User Profile
                   ListTile(
                     leading: MyCircularContainer(

@@ -63,6 +63,9 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   : dark
                   ? Brightness.light
                   : Brightness.dark,
+          systemNavigationBarColor: Colors.transparent,
+          systemNavigationBarIconBrightness:
+              dark ? Brightness.light : Brightness.dark,
         ),
       ),
     );

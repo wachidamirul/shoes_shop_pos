@@ -16,19 +16,22 @@ class MyProductTitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style:
-          smallSize
-              ? Theme.of(
-                context,
-              ).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w600)
-              : Theme.of(
-                context,
-              ).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w600),
-      overflow: TextOverflow.ellipsis,
-      maxLines: maxLines,
-      textAlign: textAlign,
+    return Padding(
+      padding: const EdgeInsets.only(right: 4),
+      child: Text(
+        title,
+        style:
+            smallSize
+                ? Theme.of(
+                  context,
+                ).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w600)
+                : Theme.of(
+                  context,
+                ).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w600),
+        overflow: TextOverflow.ellipsis,
+        maxLines: maxLines,
+        textAlign: textAlign,
+      ),
     );
   }
 }

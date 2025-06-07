@@ -23,7 +23,7 @@ class MyProductCardVertical extends StatelessWidget {
         print("Product card tapped");
       },
       child: Container(
-        width: 180,
+        width: double.infinity,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: [MyShadowStyle.productItemShadow],
@@ -34,7 +34,7 @@ class MyProductCardVertical extends StatelessWidget {
           children: [
             // -- Thumbnail
             MyRoundedContainer(
-              height: 180,
+              height: 171,
               padding: const EdgeInsets.all(MySizes.sm),
               backgroundColor: dark ? MyColors.dark : MyColors.light,
               child: Stack(
@@ -93,9 +93,23 @@ class MyProductCardVertical extends StatelessWidget {
                   const SizedBox(height: MySizes.spaceBtwItems / 2),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const MyProductPriceText(price: "\$35.5", isLarge: true),
+                    crossAxisAlignment: CrossAxisAlignment.end,
 
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          MyProductPriceText(
+                            price: "\$47,33",
+                            isLarge: false,
+                            lineThrough: true,
+                          ),
+                          const MyProductPriceText(
+                            price: "\$35.5",
+                            isLarge: true,
+                          ),
+                        ],
+                      ),
                       Container(
                         decoration: const BoxDecoration(
                           color: MyColors.primary,
@@ -107,8 +121,8 @@ class MyProductCardVertical extends StatelessWidget {
                           ),
                         ),
                         child: SizedBox(
-                          width: MySizes.iconLg * 1.2,
-                          height: MySizes.iconLg * 1.2,
+                          width: MySizes.iconLg * 1.3,
+                          height: MySizes.iconLg * 1.3,
                           child: Center(
                             child: Icon(Iconsax.add, color: MyColors.white),
                           ),

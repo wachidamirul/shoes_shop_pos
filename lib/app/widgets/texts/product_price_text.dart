@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../utils/constants/colors.dart';
+
 class MyProductPriceText extends StatelessWidget {
   const MyProductPriceText({
     super.key,
@@ -26,9 +28,10 @@ class MyProductPriceText extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 decoration: lineThrough ? TextDecoration.lineThrough : null,
               )
-              : Theme.of(context).textTheme.titleLarge?.copyWith(
+              : Theme.of(context).textTheme.labelLarge?.copyWith(
                 fontWeight: FontWeight.w600,
                 decoration: lineThrough ? TextDecoration.lineThrough : null,
+                color: lineThrough ? MyColors.error : null,
               ),
     );
   }

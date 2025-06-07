@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../utils/device_utility.dart';
-import '../../../utils/helpers/helper_functions.dart';
+import '../../utils/device_utility.dart';
+import '../../utils/helpers/helper_functions.dart';
 
-class MyAppBarProfile extends StatelessWidget implements PreferredSizeWidget {
-  const MyAppBarProfile({super.key, this.lightSystemOverlayStyle = false});
+class MyAppBarBlank extends StatelessWidget implements PreferredSizeWidget {
+  const MyAppBarBlank({super.key, this.lightSystemOverlayStyle = false});
 
   final bool lightSystemOverlayStyle;
 

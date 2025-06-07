@@ -9,6 +9,7 @@ class ThemeController extends GetxController {
 
   // Reactive themeMode
   late final Rx<ThemeMode> themeMode;
+  RxBool isDarkMode = false.obs;
 
   ThemeMode _loadThemeFromBox() {
     String? themeText = _storage.readData<String>(_key);
@@ -30,10 +31,12 @@ class ThemeController extends GetxController {
     if (themeMode.value == ThemeMode.light) {
       themeMode.value = ThemeMode.dark;
       Get.changeThemeMode(ThemeMode.dark);
+      isDarkMode.value = true;
       _saveThemeToBox('dark');
     } else {
       themeMode.value = ThemeMode.light;
       Get.changeThemeMode(ThemeMode.light);
+      isDarkMode.value = false;
       _saveThemeToBox('light');
     }
   }

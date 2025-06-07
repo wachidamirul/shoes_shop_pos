@@ -14,8 +14,8 @@ class ProfileController extends GetxController {
   final RxnString email = RxnString();
 
   void logout() async {
-    await authService.signOut();
     Get.offAllNamed(Routes.LOGIN);
+    await authService.signOut();
   }
 
   @override

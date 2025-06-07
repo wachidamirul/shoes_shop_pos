@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constants/colors.dart';
+import '../../utils/constants/sizes.dart';
 import '../../utils/device_utility.dart';
 import '../../utils/helpers/helper_functions.dart';
 
@@ -17,13 +19,14 @@ class MyTabBar extends StatelessWidget implements PreferredSizeWidget {
     return Material(
       color: dark ? MyColors.dark : MyColors.light,
       child: TabBar(
-        // isScrollable: true,
         controller: controller,
+        // isScrollable: true,
         indicatorColor: MyColors.primary,
         labelColor: dark ? MyColors.white : MyColors.primary,
         unselectedLabelColor: MyColors.darkGrey,
         tabAlignment: TabAlignment.fill,
         tabs: tabs,
+        labelPadding: const EdgeInsets.symmetric(horizontal: MySizes.sm),
       ),
     );
   }

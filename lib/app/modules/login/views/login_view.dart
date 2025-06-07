@@ -37,7 +37,7 @@ class LoginView extends GetView<LoginController> {
                     const SizedBox(height: MySizes.spaceBtwSections),
 
                     // Social Login
-                    MySocialButtons(),
+                    MySocialButtons(controller: c),
                   ],
                 ),
               ),

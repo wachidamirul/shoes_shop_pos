@@ -5,13 +5,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'app/routes/app_pages.dart';
-import 'app/utils/services/api_service.dart';
+import 'app/services/env_service.dart';
 import 'app/utils/theme/theme.dart';
 import 'app/utils/theme/theme_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   try {
     await dotenv.load(fileName: ".env"); // Load environment variables
   } catch (e) {
@@ -19,12 +18,12 @@ void main() async {
   }
 
   await Supabase.initialize(
-    url: ApiService.supabaseUrl,
-    anonKey: ApiService.supabaseKey,
+    url: EnvService.supabaseUrl,
+    anonKey: EnvService.supabaseKey,
   );
 
   await GetStorage.init();
-  Get.put(ThemeController());
+  Get.lazyPut<ThemeController>(() => ThemeController());
   final themeController = Get.find<ThemeController>();
 
   runApp(
@@ -39,6 +38,3 @@ void main() async {
     ),
   );
 }
-
-// It's handy to then extract the Supabase client in a variable for later uses
-final supabase = Supabase.instance.client;

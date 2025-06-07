@@ -50,9 +50,4 @@ class ThemeController extends GetxController {
     themeMode = _loadThemeFromBox().obs;
     Get.changeThemeMode(themeMode.value);
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
 }

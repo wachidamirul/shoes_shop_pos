@@ -1,4 +1,3 @@
-
 class MyValidator {
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
@@ -43,6 +42,18 @@ class MyValidator {
     return null;
   }
 
+  static String? passwordMatch(String? password, String? confirmPassword) {
+    if (password == null || confirmPassword == null) {
+      return 'Both password fields are required.';
+    }
+
+    if (password != confirmPassword) {
+      return 'Passwords do not match.';
+    }
+
+    return null;
+  }
+
   static String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {
       return 'Phone number is required.';
@@ -58,5 +69,5 @@ class MyValidator {
     return null;
   }
 
-// Add more custom validators as needed for your specific requirements.
+  // Add more custom validators as needed for your specific requirements.
 }

@@ -94,24 +94,29 @@ class MyRegisterForm extends StatelessWidget {
           const SizedBox(height: MySizes.spaceBtwItems),
 
           // Terms and Conditions
-          Row(
-            children: [
-              SizedBox(
-                width: 24,
-                height: 24,
-                child: Checkbox(
-                  value: true, // This should be managed by a state variable
-                  onChanged: (value) {
-                    // Handle checkbox change
-                  },
+          GestureDetector(
+            onTap: () {
+              controller.handleTermsAccepted(!controller.isTermsAccepted.value);
+            },
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: Checkbox(
+                    value: controller.isTermsAccepted.value,
+                    onChanged: (value) {
+                      controller.handleTermsAccepted(value);
+                    },
+                  ),
                 ),
-              ),
-              const SizedBox(width: MySizes.sm),
-              Text(
-                MyTexts.termsAndConditions,
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-            ],
+                const SizedBox(width: MySizes.sm),
+                Text(
+                  MyTexts.termsAndConditions,
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
+              ],
+            ),
           ),
 
           const SizedBox(height: MySizes.spaceBtwSections),

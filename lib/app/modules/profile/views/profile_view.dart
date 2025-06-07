@@ -9,8 +9,23 @@ class ProfileView extends GetView<ProfileController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('ProfileView'), centerTitle: true),
-      body: const Center(
-        child: Text('ProfileView is working', style: TextStyle(fontSize: 20)),
+      body: Center(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(controller.firstName.value ?? ''),
+                const SizedBox(width: 4),
+                Text(controller.lastName.value ?? ''),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Text(controller.email.value ?? ''),
+            const SizedBox(height: 16),
+            ElevatedButton(onPressed: controller.logout, child: Text("Logout")),
+          ],
+        ),
       ),
     );
   }

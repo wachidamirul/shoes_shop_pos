@@ -23,20 +23,25 @@ class ProductView extends GetView<ProductController> {
         child: const Icon(Icons.add, color: MyColors.white),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      body: ListView.separated(
-        itemCount: 10,
-        shrinkWrap: true,
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(MySizes.md),
-        itemBuilder:
-            (_, index) => Container(
+      body: Obx(() {
+        if (controller.products.isEmpty) {
+          return const Center(child: Text('No products found.'));
+        }
+        return ListView.separated(
+          itemCount: controller.products.length,
+          shrinkWrap: true,
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.all(MySizes.md),
+          itemBuilder: (_, index) {
+            final product = controller.products[index];
+            return Container(
               padding: const EdgeInsets.all(MySizes.sm),
               decoration: BoxDecoration(
                 color: dark ? MyColors.black : MyColors.white,
                 borderRadius: BorderRadius.circular(MySizes.cardRadiusMd),
                 boxShadow: [
                   BoxShadow(
-                    color: MyColors.dark.withValues(alpha: 0.1),
+                    color: MyColors.dark.withOpacity(0.1),
                     blurRadius: 10,
                     offset: const Offset(0, 5),
                   ),
@@ -45,7 +50,7 @@ class ProductView extends GetView<ProductController> {
               child: GestureDetector(
                 onTap: () {
                   // Action for the product item tap
-                  print("Product item tapped: $index");
+                  print("Product item tapped: ${product['name']}");
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,15 +59,14 @@ class ProductView extends GetView<ProductController> {
                       width: 60,
                       height: 60,
                       isNetworkImage: true,
-                      imageUrl:
-                          "https://www.converse.id/media/catalog/product/0/1/01-CONVERSE-FFSSBCONA-CONA04144C-Black.jpg",
+                      imageUrl: product['image_url'] ?? '',
                       applyImageRadius: true,
                       borderRadius: MySizes.cardRadiusMd,
                     ),
                     const SizedBox(width: MySizes.spaceBtwItems),
                     Expanded(
                       child: Text(
-                        'Converse Chuck Taylor All Star',
+                        product['name'] ?? '',
                         style: Theme.of(context).textTheme.bodyMedium,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -78,9 +82,11 @@ class ProductView extends GetView<ProductController> {
                   ],
                 ),
               ),
-            ),
-        separatorBuilder: (_, __) => const SizedBox(height: MySizes.sm),
-      ),
+            );
+          },
+          separatorBuilder: (_, __) => const SizedBox(height: MySizes.sm),
+        );
+      }),
     );
   }
 }

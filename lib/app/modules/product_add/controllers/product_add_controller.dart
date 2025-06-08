@@ -86,11 +86,19 @@ class ProductAddController extends GetxController {
             'variant_id': variantId,
             'quantity': int.tryParse(field.qtyController.text) ?? 0,
           });
-        }
 
-        Get.snackbar('Success', 'Product added successfully');
+          // back to previous screen and refresh product list
+          Get.back(result: true);
+        }
+        MyLoaders.successSnackBar(
+          title: "Success",
+          message: "Product added successfully",
+        );
       } catch (e) {
-        Get.snackbar('Error', e.toString());
+        MyLoaders.errorSnackBar(
+          title: "Error",
+          message: "Failed to add product: $e",
+        );
       }
     }
   }

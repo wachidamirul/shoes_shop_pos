@@ -41,7 +41,9 @@ class MySearchContainer extends StatelessWidget {
             borderRadius: BorderRadius.circular(MySizes.cardRadiusLg),
             border:
                 showBorder
-                    ? Border.all(color: dark ? MyColors.dark : MyColors.light)
+                    ? Border.all(
+                      color: dark ? MyColors.darkerGrey : MyColors.darkGrey,
+                    )
                     : null,
           ),
           child: Row(

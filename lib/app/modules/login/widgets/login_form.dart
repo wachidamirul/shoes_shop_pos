@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -17,6 +18,7 @@ class MyLoginForm extends StatelessWidget {
     final dark = MyHelperFunctions.isDarkMode(context);
 
     return Form(
+      key: controller.formKey,
       child: Column(
         children: [
           // Email
@@ -26,6 +28,13 @@ class MyLoginForm extends StatelessWidget {
               prefixIcon: Icon(Iconsax.direct_right),
               labelText: MyTexts.email,
             ),
+            validator:
+                (value) =>
+                    value == null || value.isEmpty
+                        ? 'Enter your email'
+                        : !GetUtils.isEmail(value)
+                        ? 'Enter a valid email'
+                        : null,
           ),
 
           const SizedBox(height: MySizes.spaceBtwInputFields),
@@ -44,6 +53,13 @@ class MyLoginForm extends StatelessWidget {
                 ),
               ),
             ),
+            validator:
+                (value) =>
+                    value == null || value.isEmpty
+                        ? 'Enter your password'
+                        : value.length < 6
+                        ? 'Password must be at least 6 characters'
+                        : null,
           ),
 
           const SizedBox(height: MySizes.spaceBtwInputFields / 2),

@@ -4,21 +4,17 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
-import '../../../utils/device_utility.dart';
 import '../../../utils/helpers/helper_functions.dart';
-import '../../../utils/theme/theme_controller.dart';
-import '../../../widgets/appbar/app_bar.dart';
 import '../../../widgets/custom_shapes/containers/circular_container.dart';
 import '../../../widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../widgets/texts/section_heading.dart';
 import '../controllers/profile_controller.dart';
-import '../widgets/app_bar_profile.dart';
+import '../../../widgets/appbar/app_bar_blank.dart';
 
 class ProfileView extends GetView<ProfileController> {
   const ProfileView({super.key});
   @override
   Widget build(BuildContext context) {
-    final themeController = Get.find<ThemeController>();
     final dark = MyHelperFunctions.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
@@ -29,7 +25,7 @@ class ProfileView extends GetView<ProfileController> {
               child: Column(
                 children: [
                   // -- AppBar
-                  MyAppBarProfile(lightSystemOverlayStyle: true),
+                  MyAppBarBlank(lightSystemOverlayStyle: true),
                   // -- User Profile
                   ListTile(
                     leading: MyCircularContainer(
@@ -88,9 +84,9 @@ class ProfileView extends GetView<ProfileController> {
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     trailing: Switch(
-                      value: themeController.isDarkMode.value,
+                      value: controller.themeController.isDarkMode.value,
                       onChanged: (value) {
-                        themeController.toggleTheme();
+                        controller.toggleTheme();
                       },
                       activeColor: MyColors.primary,
                       activeTrackColor: MyColors.primary.withValues(alpha: 0.5),

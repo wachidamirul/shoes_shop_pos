@@ -9,6 +9,7 @@ import '../../../widgets/navigation_menu/navigation_menu.dart';
 
 class LoginController extends GetxController {
   final authService = AuthService();
+  final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -25,23 +26,17 @@ class LoginController extends GetxController {
     final email = emailController.text.trim();
     final password = passwordController.text;
 
-    if (email.isEmpty || password.isEmpty) {
-      MyLoaders.errorSnackBar(
-        title: 'Error',
-        message: "email and password cannot be empty",
-      );
-      return;
-    }
-
-    try {
-      final response = await authService.signInWithPassword(email, password);
-      if (response.user != null) {
-        Get.offAll(() => MyNavigationMenu());
+    if (formKey.currentState!.validate()) {
+      try {
+        final response = await authService.signInWithPassword(email, password);
+        if (response.user != null) {
+          Get.offAll(() => MyNavigationMenu());
+        }
+      } on AuthException catch (e) {
+        MyLoaders.errorSnackBar(title: 'Error', message: e.message);
+      } catch (e) {
+        MyLoaders.errorSnackBar(title: 'Error', message: e.toString());
       }
-    } on AuthException catch (e) {
-      MyLoaders.errorSnackBar(title: 'Error', message: e.message);
-    } catch (e) {
-      MyLoaders.errorSnackBar(title: 'Error', message: e.toString());
     }
   }
 

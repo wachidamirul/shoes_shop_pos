@@ -74,11 +74,18 @@ class HomeView extends GetView<HomeController> {
                   // -- Banner Section
 
                   // -- Products Section
-                  MyGridLayout(
-                    itemCount: 4,
-                    itemBuilder: (_, index) {
-                      return const MyProductCardVertical();
-                    },
+                  Obx(
+                    () => MyGridLayout(
+                      itemCount: controller.products.length,
+                      itemBuilder: (_, index) {
+                        final product = controller.products[index];
+                        return MyProductCardVertical(
+                          imageUrl: product['image_url'] ?? '',
+                          productTitle: product['name'] ?? '',
+                          price: product['price']?.toString() ?? '',
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),

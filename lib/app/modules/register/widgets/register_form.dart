@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/sizes.dart';
@@ -13,6 +14,7 @@ class MyRegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: controller.formKey,
       child: Column(
         children: [
           // Name
@@ -27,6 +29,12 @@ class MyRegisterForm extends StatelessWidget {
                     labelText: MyTexts.firstName,
                     prefixIcon: Icon(Iconsax.user),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Enter your first name';
+                    }
+                    return null;
+                  },
                 ),
               ),
               const SizedBox(width: MySizes.spaceBtwInputFields),
@@ -39,6 +47,12 @@ class MyRegisterForm extends StatelessWidget {
                     labelText: MyTexts.lastName,
                     prefixIcon: Icon(Iconsax.user),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Enter your last name';
+                    }
+                    return null;
+                  },
                 ),
               ),
             ],
@@ -53,6 +67,14 @@ class MyRegisterForm extends StatelessWidget {
               labelText: MyTexts.email,
               prefixIcon: Icon(Iconsax.direct),
             ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Enter your email';
+              } else if (!GetUtils.isEmail(value)) {
+                return 'Enter a valid email';
+              }
+              return null;
+            },
           ),
 
           const SizedBox(height: MySizes.spaceBtwInputFields),
@@ -71,6 +93,14 @@ class MyRegisterForm extends StatelessWidget {
                 ),
               ),
             ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Enter your password';
+              } else if (value.length < 6) {
+                return 'Password must be at least 6 characters';
+              }
+              return null;
+            },
           ),
 
           const SizedBox(height: MySizes.spaceBtwInputFields),
@@ -89,6 +119,14 @@ class MyRegisterForm extends StatelessWidget {
                 ),
               ),
             ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Confirm your password';
+              } else if (value != controller.passwordController.text) {
+                return 'Passwords do not match';
+              }
+              return null;
+            },
           ),
 
           const SizedBox(height: MySizes.spaceBtwItems),

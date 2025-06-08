@@ -12,6 +12,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.title,
     this.actions,
+    this.implyLeading = false,
     this.leadingIcon,
     this.leadingOnPressed,
     this.showbackArrow = false,
@@ -19,7 +20,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
 
   final Widget? title;
-  final bool showbackArrow, lightSystemOverlayStyle;
+  final bool showbackArrow, lightSystemOverlayStyle, implyLeading;
   final IconData? leadingIcon;
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
@@ -34,7 +35,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         vertical: MySizes.sm,
       ),
       child: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: implyLeading,
         leading:
             showbackArrow
                 ? IconButton(

@@ -18,9 +18,7 @@ class ProductView extends GetView<ProductController> {
       appBar: MyAppBarBlank(lightSystemOverlayStyle: false),
       floatingActionButton: FloatingActionButton(
         heroTag: 'product_fab',
-        onPressed: () {
-          // Action for the floating action button
-        },
+        onPressed: controller.goToAddProduct,
         backgroundColor: MyColors.primary,
         child: const Icon(Icons.add, color: MyColors.white),
       ),

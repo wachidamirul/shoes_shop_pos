@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../storage_utility.dart';
 
 class ThemeController extends GetxController {
-  final _storage = MyLocalStorage();
-  final _key = 'theme_mode';
+  final MyLocalStorage _storage = MyLocalStorage();
+  final String _key = 'theme_mode';
 
-  // Reactive themeMode
-  late final Rx<ThemeMode> themeMode;
-  RxBool isDarkMode = false.obs;
+  final Rx<ThemeMode> themeMode = ThemeMode.system.obs;
+  final RxBool isDarkMode = false.obs;
 
-  ThemeMode _loadThemeFromBox() {
-    String? themeText = _storage.readData<String>(_key);
+  ThemeMode _loadThemeFromStorage() {
+    final themeText = _storage.readData<String>(_key);
     switch (themeText) {
       case 'light':
         return ThemeMode.light;
@@ -23,34 +21,35 @@ class ThemeController extends GetxController {
     }
   }
 
-  void _saveThemeToBox(String themeText) {
-    _storage.saveData<String>(_key, themeText);
+  Future<void> _saveThemeToStorage(String themeText) async {
+    await _storage.saveData<String>(_key, themeText);
   }
 
   void toggleTheme() {
     if (themeMode.value == ThemeMode.light) {
-      themeMode.value = ThemeMode.dark;
-      Get.changeThemeMode(ThemeMode.dark);
-      isDarkMode.value = true;
-      _saveThemeToBox('dark');
+      _setTheme(ThemeMode.dark, 'dark');
     } else {
-      themeMode.value = ThemeMode.light;
-      Get.changeThemeMode(ThemeMode.light);
-      isDarkMode.value = false;
-      _saveThemeToBox('light');
+      _setTheme(ThemeMode.light, 'light');
     }
   }
 
   void setThemeSystem() {
-    themeMode.value = ThemeMode.system;
-    Get.changeThemeMode(ThemeMode.system);
-    _saveThemeToBox('system');
+    _setTheme(ThemeMode.system, 'system');
+  }
+
+  void _setTheme(ThemeMode mode, String text) {
+    themeMode.value = mode;
+    isDarkMode.value = mode == ThemeMode.dark;
+    Get.changeThemeMode(mode);
+    _saveThemeToStorage(text);
   }
 
   @override
   void onInit() {
     super.onInit();
-    themeMode = _loadThemeFromBox().obs;
-    Get.changeThemeMode(themeMode.value);
+    final loadedTheme = _loadThemeFromStorage();
+    themeMode.value = loadedTheme;
+    isDarkMode.value = loadedTheme == ThemeMode.dark;
+    Get.changeThemeMode(loadedTheme);
   }
 }

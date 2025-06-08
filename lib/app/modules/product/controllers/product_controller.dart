@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
 
-class ProductController extends GetxController {
-  //TODO: Implement ProductController
+import '../../../routes/app_pages.dart';
 
-  final count = 0.obs;
+class ProductController extends GetxController {
+  void goToAddProduct() {
+    Get.toNamed(Routes.PRODUCT_ADD);
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +21,4 @@ class ProductController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

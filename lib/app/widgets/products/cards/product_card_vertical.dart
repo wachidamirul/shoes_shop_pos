@@ -11,7 +11,16 @@ import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 
 class MyProductCardVertical extends StatelessWidget {
-  const MyProductCardVertical({super.key});
+  const MyProductCardVertical({
+    super.key,
+    required this.imageUrl,
+    required this.productTitle,
+    required this.price,
+  });
+
+  final String imageUrl;
+  final String productTitle;
+  final String price;
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +55,7 @@ class MyProductCardVertical extends StatelessWidget {
                     width: double.infinity,
                     height: double.infinity,
                     isNetworkImage: true,
-                    imageUrl:
-                        "https://www.converse.id/media/catalog/product/0/1/01-CONVERSE-FFSSBCONA-CONA04144C-Black.jpg",
+                    imageUrl: imageUrl,
                     applyImageRadius: true,
                     backgroundColor:
                         dark
@@ -66,17 +74,14 @@ class MyProductCardVertical extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MyProductTitleText(
-                    title: "Converse Chuck Taylor All Star",
-                    smallSize: true,
-                  ),
+                  MyProductTitleText(title: productTitle, smallSize: true),
                   const SizedBox(height: MySizes.spaceBtwItems / 2),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.end,
 
                     children: [
-                      const MyProductPriceText(price: "\$35.5", isLarge: true),
+                      MyProductPriceText(price: "\$$price", isLarge: true),
                       Container(
                         decoration: const BoxDecoration(
                           color: MyColors.primary,

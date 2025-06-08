@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../routes/app_pages.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/text_strings.dart';
 import '../../../widgets/appbar/app_bar.dart';
@@ -29,7 +31,14 @@ class MyHomeAppBar extends StatelessWidget {
           ),
         ],
       ),
-      actions: [MyCartCounterIcon(onPressed: () {}, isIconLight: true)],
+      actions: [
+        MyCartCounterIcon(
+          onPressed: () {
+            Get.toNamed(Routes.CARTS);
+          },
+          isIconLight: true,
+        ),
+      ],
     );
   }
 }

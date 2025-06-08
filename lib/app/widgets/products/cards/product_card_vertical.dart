@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../modules/carts/controllers/carts_controller.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/shadows.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
+import '../../../utils/popups/loaders.dart';
 import '../../custom_shapes/containers/rounded_container.dart';
 import '../../custom_shapes/containers/rounded_image.dart';
 import '../../texts/product_price_text.dart';
@@ -25,11 +28,19 @@ class MyProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = MyHelperFunctions.isDarkMode(context);
+    final CartsController cartsController = Get.put(CartsController());
 
     return GestureDetector(
       onTap: () {
-        // Handle product card tap
-        print("Product card tapped");
+        cartsController.addToCart({
+          'image_url': imageUrl,
+          'name': productTitle,
+          'price': price,
+        });
+        MyLoaders.successSnackBar(
+          title: "Added to Cart",
+          message: "$productTitle has been added to your cart.",
+        );
       },
       child: Container(
         width: double.infinity,

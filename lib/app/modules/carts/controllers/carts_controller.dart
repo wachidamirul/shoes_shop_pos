@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../utils/popups/loaders.dart';
+
 class CartsController extends GetxController {
   final RxList cartItems = [].obs;
   final SupabaseClient supabase = Supabase.instance.client;
@@ -39,9 +41,12 @@ class CartsController extends GetxController {
         }
       }
       cartItems.clear();
-      Get.snackbar('Checkout', 'Checkout successful!');
+      MyLoaders.successSnackBar(
+        title: 'Checkout Successful',
+        message: 'Your order has been placed successfully.',
+      );
     } catch (e) {
-      Get.snackbar('Error', 'Checkout failed: $e');
+      MyLoaders.errorSnackBar(title: 'Checkout Error', message: e.toString());
     }
   }
 }

@@ -2,6 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
 import '../../modules/analytic/controllers/analytic_controller.dart';
 import '../../modules/analytic/views/analytic_view.dart';
@@ -26,6 +27,7 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
   final themeController = Get.find<ThemeController>();
 
   var currentIndex = 0.obs;
+  String? result;
 
   getIndex() => currentIndex.value;
   setIndex(int index) => currentIndex.value = index;
@@ -64,7 +66,23 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
     return Scaffold(
       body: IndexedStack(index: getIndex(), children: screenList),
       floatingActionButton: FloatingActionButton(
-        onPressed: themeController.toggleTheme,
+        onPressed: () async {
+          String? res = await SimpleBarcodeScanner.scanBarcode(
+            context,
+            barcodeAppBar: const BarcodeAppBar(
+              appBarTitle: 'Test',
+              centerTitle: false,
+              enableBackButton: true,
+              backButtonIcon: Icon(Icons.arrow_back_ios),
+            ),
+            isShowFlashIcon: true,
+            delayMillis: 2000,
+            cameraFace: CameraFace.back,
+          );
+          setState(() {
+            result = res as String;
+          });
+        },
         elevation: 0,
         shape: const CircleBorder(),
         child: Container(

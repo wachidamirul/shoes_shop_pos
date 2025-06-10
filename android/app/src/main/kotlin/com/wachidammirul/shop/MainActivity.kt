@@ -1,4 +1,4 @@
-package com.timobile.shop
+package com.wachidammirul.shop
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -16,11 +16,13 @@ import '../../texts/product_title_text.dart';
 class MyProductCardVertical extends StatelessWidget {
   const MyProductCardVertical({
     super.key,
+    required this.productId,
     required this.imageUrl,
     required this.productTitle,
     required this.price,
   });
 
+  final int productId;
   final String imageUrl;
   final String productTitle;
   final String price;
@@ -31,17 +33,7 @@ class MyProductCardVertical extends StatelessWidget {
     final CartsController cartsController = Get.put(CartsController());
 
     return GestureDetector(
-      onTap: () {
-        cartsController.addToCart({
-          'image_url': imageUrl,
-          'name': productTitle,
-          'price': price,
-        });
-        MyLoaders.successSnackBar(
-          title: "Added to Cart",
-          message: "$productTitle has been added to your cart.",
-        );
-      },
+      onTap: () {},
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(1),
@@ -76,9 +68,7 @@ class MyProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
-
             const SizedBox(height: MySizes.spaceBtwItems / 2),
-
             // -- Details
             Padding(
               padding: const EdgeInsets.only(left: MySizes.sm),
@@ -89,30 +79,42 @@ class MyProductCardVertical extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyProductTitleText(title: productTitle, smallSize: true),
-                    // const SizedBox(height: MySizes.spaceBtwItems / 2),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        MyProductPriceText(price: "\$$price", isLarge: true),
-                        Container(
-                          decoration: const BoxDecoration(
-                            color: MyColors.primary,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(MySizes.cardRadiusMd),
-                              bottomRight: Radius.circular(
-                                MySizes.productImageRadius,
+                    GestureDetector(
+                      onTap: () async {
+                        cartsController.addToCart({
+                          'image_url': imageUrl,
+                          'name': productTitle,
+                          'price': price,
+                        });
+                        MyLoaders.successSnackBar(
+                          title: "Added to Cart",
+                          message: "$productTitle has been added to your cart.",
+                        );
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          MyProductPriceText(price: "\$$price", isLarge: true),
+                          Container(
+                            decoration: const BoxDecoration(
+                              color: MyColors.primary,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(MySizes.cardRadiusMd),
+                                bottomRight: Radius.circular(
+                                  MySizes.productImageRadius,
+                                ),
+                              ),
+                            ),
+                            child: SizedBox(
+                              width: MySizes.iconLg * 1.2,
+                              height: MySizes.iconLg * 1.2,
+                              child: Center(
+                                child: Icon(Iconsax.add, color: MyColors.white),
                               ),
                             ),
                           ),
-                          child: SizedBox(
-                            width: MySizes.iconLg * 1.2,
-                            height: MySizes.iconLg * 1.2,
-                            child: Center(
-                              child: Icon(Iconsax.add, color: MyColors.white),
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

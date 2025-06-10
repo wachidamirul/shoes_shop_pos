@@ -6,7 +6,8 @@ import '../constants/colors.dart';
 import '../helpers/helper_functions.dart';
 
 class MyLoaders {
-  static hideSnackBar() => ScaffoldMessenger.of(Get.context!).hideCurrentSnackBar();
+  static hideSnackBar() =>
+      ScaffoldMessenger.of(Get.context!).hideCurrentSnackBar();
 
   static customToast({required message}) {
     ScaffoldMessenger.of(Get.context!).showSnackBar(
@@ -19,9 +20,17 @@ class MyLoaders {
           margin: const EdgeInsets.symmetric(horizontal: 30),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            color: MyHelperFunctions.isDarkMode(Get.context!) ? MyColors.darkerGrey.withValues(alpha: 0.9) : MyColors.grey.withValues(alpha: 0.9),
+            color:
+                MyHelperFunctions.isDarkMode(Get.context!)
+                    ? MyColors.darkerGrey.withValues(alpha: 0.9)
+                    : MyColors.grey.withValues(alpha: 0.9),
           ),
-          child: Center(child: Text(message, style: Theme.of(Get.context!).textTheme.labelLarge)),
+          child: Center(
+            child: Text(
+              message,
+              style: Theme.of(Get.context!).textTheme.labelLarge,
+            ),
+          ),
         ),
       ),
     );

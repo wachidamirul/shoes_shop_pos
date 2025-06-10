@@ -6,7 +6,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'app/routes/app_pages.dart';
-import 'app/services/env_service.dart';
+import 'app/utils/env.dart';
 import 'app/utils/theme/theme.dart';
 import 'app/utils/theme/theme_controller.dart';
 

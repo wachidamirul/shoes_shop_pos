@@ -82,38 +82,40 @@ class MyProductCardVertical extends StatelessWidget {
             // -- Details
             Padding(
               padding: const EdgeInsets.only(left: MySizes.sm),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MyProductTitleText(title: productTitle, smallSize: true),
-                  const SizedBox(height: MySizes.spaceBtwItems / 2),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-
-                    children: [
-                      MyProductPriceText(price: "\$$price", isLarge: true),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: MyColors.primary,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(MySizes.cardRadiusMd),
-                            bottomRight: Radius.circular(
-                              MySizes.productImageRadius,
+              child: SizedBox(
+                height: 81,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    MyProductTitleText(title: productTitle, smallSize: true),
+                    // const SizedBox(height: MySizes.spaceBtwItems / 2),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        MyProductPriceText(price: "\$$price", isLarge: true),
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: MyColors.primary,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(MySizes.cardRadiusMd),
+                              bottomRight: Radius.circular(
+                                MySizes.productImageRadius,
+                              ),
+                            ),
+                          ),
+                          child: SizedBox(
+                            width: MySizes.iconLg * 1.2,
+                            height: MySizes.iconLg * 1.2,
+                            child: Center(
+                              child: Icon(Iconsax.add, color: MyColors.white),
                             ),
                           ),
                         ),
-                        child: SizedBox(
-                          width: MySizes.iconLg * 1.2,
-                          height: MySizes.iconLg * 1.2,
-                          child: Center(
-                            child: Icon(Iconsax.add, color: MyColors.white),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

@@ -14,6 +14,7 @@ import '../../modules/profile/controllers/profile_controller.dart';
 import '../../modules/profile/views/profile_view.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/helpers/helper_functions.dart';
+import '../../utils/popups/loaders.dart';
 import '../../utils/theme/theme_controller.dart';
 
 class MyNavigationMenu extends StatefulWidget {
@@ -69,18 +70,16 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
         onPressed: () async {
           String? res = await SimpleBarcodeScanner.scanBarcode(
             context,
-            barcodeAppBar: const BarcodeAppBar(
-              appBarTitle: 'Test',
-              centerTitle: false,
-              enableBackButton: true,
-              backButtonIcon: Icon(Icons.arrow_back_ios),
-            ),
-            isShowFlashIcon: true,
+            isShowFlashIcon: false,
             delayMillis: 2000,
             cameraFace: CameraFace.back,
+            scanType: ScanType.qr,
           );
           setState(() {
             result = res as String;
+            if (result != null) {
+              MyLoaders.successSnackBar(title: 'Scan Result', message: result!);
+            }
           });
         },
         elevation: 0,

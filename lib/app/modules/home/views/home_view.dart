@@ -80,6 +80,7 @@ class HomeView extends GetView<HomeController> {
                       itemBuilder: (_, index) {
                         final product = controller.products[index];
                         return MyProductCardVertical(
+                          productId: product['id'] ?? 0,
                           imageUrl: product['image_url'] ?? '',
                           productTitle: product['name'] ?? '',
                           price: product['price']?.toString() ?? '',

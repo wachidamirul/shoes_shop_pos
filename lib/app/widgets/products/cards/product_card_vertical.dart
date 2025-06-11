@@ -53,7 +53,6 @@ class MyProductCardVertical extends StatelessWidget {
               backgroundColor: dark ? MyColors.dark : MyColors.light,
               child: Stack(
                 children: [
-                  // MyRound
                   MyRoundedImage(
                     width: double.infinity,
                     height: double.infinity,
@@ -79,42 +78,29 @@ class MyProductCardVertical extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyProductTitleText(title: productTitle, smallSize: true),
-                    GestureDetector(
-                      onTap: () async {
-                        cartsController.addToCart({
-                          'image_url': imageUrl,
-                          'name': productTitle,
-                          'price': price,
-                        });
-                        MyLoaders.successSnackBar(
-                          title: "Added to Cart",
-                          message: "$productTitle has been added to your cart.",
-                        );
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          MyProductPriceText(price: "\$$price", isLarge: true),
-                          Container(
-                            decoration: const BoxDecoration(
-                              color: MyColors.primary,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(MySizes.cardRadiusMd),
-                                bottomRight: Radius.circular(
-                                  MySizes.productImageRadius,
-                                ),
-                              ),
-                            ),
-                            child: SizedBox(
-                              width: MySizes.iconLg * 1.2,
-                              height: MySizes.iconLg * 1.2,
-                              child: Center(
-                                child: Icon(Iconsax.add, color: MyColors.white),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        MyProductPriceText(price: "\$$price", isLarge: true),
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: MyColors.primary,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(MySizes.cardRadiusMd),
+                              bottomRight: Radius.circular(
+                                MySizes.productImageRadius,
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                          child: SizedBox(
+                            width: MySizes.iconLg * 1.2,
+                            height: MySizes.iconLg * 1.2,
+                            child: Center(
+                              child: Icon(Iconsax.add, color: MyColors.white),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../modules/carts/controllers/carts_controller.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/shadows.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
-import '../../../utils/popups/loaders.dart';
 import '../../custom_shapes/containers/rounded_container.dart';
 import '../../custom_shapes/containers/rounded_image.dart';
 import '../../texts/product_price_text.dart';
@@ -16,13 +13,13 @@ import '../../texts/product_title_text.dart';
 class MyProductCardVertical extends StatelessWidget {
   const MyProductCardVertical({
     super.key,
-    required this.productId,
+    required this.onTap,
     required this.imageUrl,
     required this.productTitle,
     required this.price,
   });
 
-  final int productId;
+  final VoidCallback onTap;
   final String imageUrl;
   final String productTitle;
   final String price;
@@ -30,10 +27,9 @@ class MyProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = MyHelperFunctions.isDarkMode(context);
-    final CartsController cartsController = Get.put(CartsController());
 
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(1),

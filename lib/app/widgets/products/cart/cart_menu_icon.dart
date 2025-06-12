@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../modules/carts/controllers/carts_controller.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/helpers/helper_functions.dart';
 
@@ -17,6 +19,7 @@ class MyCartCounterIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = MyHelperFunctions.isDarkMode(context);
+    final CartsController cartsController = Get.put(CartsController());
 
     return Stack(
       children: [
@@ -47,16 +50,18 @@ class MyCartCounterIcon extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(
-              child: Text(
-                "2",
-                style: Theme.of(context).textTheme.labelLarge!.apply(
-                  color:
-                      isIconLight
-                          ? MyColors.white
-                          : dark
-                          ? MyColors.black
-                          : MyColors.white,
-                  fontSizeFactor: 0.8,
+              child: Obx(
+                () => Text(
+                  cartsController.cartItems.length.toString(),
+                  style: Theme.of(context).textTheme.labelLarge!.apply(
+                    color:
+                        isIconLight
+                            ? MyColors.white
+                            : dark
+                            ? MyColors.black
+                            : MyColors.white,
+                    fontSizeFactor: 0.8,
+                  ),
                 ),
               ),
             ),

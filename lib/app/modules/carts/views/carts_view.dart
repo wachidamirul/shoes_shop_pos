@@ -29,15 +29,24 @@ class CartsView extends GetView<CartsController> {
                       height: 50,
                       fit: BoxFit.cover,
                     ),
-                    title: Text(item['name'] ?? ''),
+                    title: Text(
+                      item['name'] ?? '',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Price: \$${item['price'] ?? 0}'),
                         Row(
                           children: [
                             const Text('Size: '),
                             Text(item['variant_name'] ?? ''),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Text('x'),
+                            Text('${item['quantity'] ?? 1}'),
                           ],
                         ),
                       ],
@@ -45,10 +54,10 @@ class CartsView extends GetView<CartsController> {
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text("Qty: "),
                         Text(
-                          '${item['quantity'] ?? 1}',
-                          style: const TextStyle(fontSize: 16),
+                          "\$${((int.tryParse(item['quantity'].toString()) ?? 1) * (num.tryParse(item['price'].toString()) ?? 0))}",
+                          style: Theme.of(context).textTheme.bodyLarge!
+                              .copyWith(fontWeight: FontWeight.w600),
                         ),
                         IconButton(
                           icon: const Icon(Icons.delete),

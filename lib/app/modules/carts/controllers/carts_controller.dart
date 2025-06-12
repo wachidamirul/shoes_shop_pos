@@ -54,31 +54,56 @@ class CartsController extends GetxController {
 
   Future<void> checkout() async {
     try {
-      for (final item in cartItems) {
-        await supabase.from('orders').insert({
-          'product_id': item['id'],
-          'quantity': 1,
-          'price': item['price'],
-        });
-
-        final sizes = item['sizes'] as List<dynamic>? ?? [];
-        if (sizes.isNotEmpty) {
-          final firstSize = sizes[0];
-          final sizeId = firstSize['id'];
-          final currentStock = firstSize['stock'] ?? 0;
-          if (currentStock > 0) {
-            await supabase
-                .from('product_sizes')
-                .update({'stock': currentStock - 1})
-                .eq('id', sizeId);
-          }
-        }
+      if (cartItems.isEmpty) {
+        MyLoaders.errorSnackBar(
+          title: 'Checkout Error',
+          message: 'Cart is empty.',
+        );
+        return;
       }
+
+      // Calculate total amount
+      num totalAmount = 0;
+      for (var item in cartItems) {
+        final quantity = int.tryParse(item['quantity'].toString()) ?? 1;
+        final price = num.tryParse(item['price'].toString()) ?? 0;
+        totalAmount += quantity * price;
+      }
+
+      // Insert into transactions table
+      final transactionRes =
+          await supabase
+              .from('transactions')
+              .insert({'total_amount': totalAmount})
+              .select()
+              .single();
+
+      final transactionId = transactionRes['transaction_id'];
+
+      // Insert each cart item into transactions_details
+      for (var item in cartItems) {
+        final quantity = int.tryParse(item['quantity'].toString()) ?? 1;
+        final price = num.tryParse(item['price'].toString()) ?? 0;
+        await supabase.from('transactions_details').insert({
+          'transaction_id': transactionId,
+          'variant_id': item['variant_id'],
+          'quantity': quantity,
+          'total_price': quantity * price,
+        });
+        // update stock
+        await supabase.rpc(
+          'decrement_stock',
+          params: {'variant_id': item['variant_id'], 'qty': quantity},
+        );
+      }
+
+      // Clear cart
       cartItems.clear();
       localStorage.saveData('cartItems', cartItems.toList());
+
       MyLoaders.successSnackBar(
-        title: 'Checkout Successful',
-        message: 'Your order has been placed successfully.',
+        title: 'Checkout Success',
+        message: 'Transaction completed!',
       );
     } catch (e) {
       MyLoaders.errorSnackBar(title: 'Checkout Error', message: e.toString());

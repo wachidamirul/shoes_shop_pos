@@ -30,10 +30,31 @@ class CartsView extends GetView<CartsController> {
                       fit: BoxFit.cover,
                     ),
                     title: Text(item['name'] ?? ''),
-                    subtitle: Text('\$${item['price']}'),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () => controller.removeFromCart(index),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Price: \$${item['price'] ?? 0}'),
+                        Row(
+                          children: [
+                            const Text('Size: '),
+                            Text(item['variant_name'] ?? ''),
+                          ],
+                        ),
+                      ],
+                    ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text("Qty: "),
+                        Text(
+                          '${item['quantity'] ?? 1}',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete),
+                          onPressed: () => controller.removeFromCart(index),
+                        ),
+                      ],
                     ),
                   );
                 },

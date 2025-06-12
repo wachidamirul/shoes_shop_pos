@@ -5,12 +5,14 @@ import 'package:iconsax/iconsax.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
+import '../../../utils/popups/loaders.dart';
 import '../../../widgets/appbar/app_bar.dart';
 import '../../../widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import '../../../widgets/navigation_menu/bottom_add_to_cart.dart';
 import '../../../widgets/texts/product_price_text.dart';
 import '../../../widgets/texts/section_heading.dart';
+import '../../carts/controllers/carts_controller.dart';
 import '../controllers/product_detail_controller.dart';
 
 class ProductDetailView extends GetView<ProductDetailController> {
@@ -18,12 +20,35 @@ class ProductDetailView extends GetView<ProductDetailController> {
   @override
   Widget build(BuildContext context) {
     final dark = MyHelperFunctions.isDarkMode(context);
+    final CartsController cartsController = Get.put(CartsController());
 
     return Scaffold(
       appBar: MyAppBar(showbackArrow: true, leadingIcon: Iconsax.arrow_left),
       extendBodyBehindAppBar: true,
       backgroundColor: dark ? MyColors.black : MyColors.white,
-      bottomNavigationBar: MyBottomAddToCart(),
+      bottomNavigationBar: Obx(() {
+        final product = controller.product.value;
+        final productId = product?['product_id'];
+        final name = product?['name'] ?? 'Product';
+        final price = product?['price']?.toString() ?? '0.00';
+        final imageUrl = product?['image_url'] ?? '';
+
+        return MyBottomAddToCart(
+          itemCount: controller.cartQuantity.value.toString(),
+          addToCart: () {
+            cartsController.addToCart({
+              'product_id': productId,
+              'image_url': imageUrl,
+              'name': name,
+              'price': price,
+              'variant_id': controller.selectedVariantId.value,
+              'quantity': controller.cartQuantity.value,
+            });
+          },
+          increaseItemCount: controller.increaseCartQuantity,
+          descreaseItemCount: controller.decreaseCartQuantity,
+        );
+      }),
       body: Obx(() {
         final product = controller.product.value;
         if (product == null) {

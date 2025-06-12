@@ -7,7 +7,16 @@ import '../../utils/helpers/helper_functions.dart';
 import '../custom_shapes/containers/circular_icon.dart';
 
 class MyBottomAddToCart extends StatelessWidget {
-  const MyBottomAddToCart({super.key});
+  const MyBottomAddToCart({
+    super.key,
+    this.itemCount = '0',
+    required this.addToCart,
+    required this.increaseItemCount,
+    required this.descreaseItemCount,
+  });
+
+  final String itemCount;
+  final VoidCallback addToCart, increaseItemCount, descreaseItemCount;
 
   @override
   Widget build(BuildContext context) {
@@ -29,27 +38,33 @@ class MyBottomAddToCart extends StatelessWidget {
         children: [
           Row(
             children: [
-              MyCircularIcon(
-                icon: Iconsax.minus,
-                backgroundColor: MyColors.darkGrey,
-                width: 40,
-                height: 40,
-                iconColor: MyColors.white,
+              GestureDetector(
+                onTap: descreaseItemCount,
+                child: MyCircularIcon(
+                  icon: Iconsax.minus,
+                  backgroundColor: MyColors.darkGrey,
+                  width: 40,
+                  height: 40,
+                  iconColor: MyColors.white,
+                ),
               ),
               const SizedBox(width: MySizes.spaceBtwItems),
-              Text('2', style: Theme.of(context).textTheme.titleSmall),
+              Text(itemCount, style: Theme.of(context).textTheme.titleSmall),
               const SizedBox(width: MySizes.spaceBtwItems),
-              MyCircularIcon(
-                icon: Iconsax.add,
-                backgroundColor: MyColors.black,
-                width: 40,
-                height: 40,
-                iconColor: MyColors.white,
+              GestureDetector(
+                onTap: increaseItemCount,
+                child: MyCircularIcon(
+                  icon: Iconsax.add,
+                  backgroundColor: MyColors.black,
+                  width: 40,
+                  height: 40,
+                  iconColor: MyColors.white,
+                ),
               ),
             ],
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: addToCart,
             style: ElevatedButton.styleFrom(
               backgroundColor: MyColors.primary,
               padding: const EdgeInsets.symmetric(

@@ -8,6 +8,7 @@ class ProductDetailController extends GetxController {
   var variants = <Map<String, dynamic>>[].obs;
   final Rx<int> valueSelectedVariant = 0.obs;
   final Rx<int?> selectedVariantId = Rx<int?>(null);
+  final Rx<int> cartQuantity = 1.obs;
 
   // Product ID passed from the previous screen
   int? productId;
@@ -54,5 +55,18 @@ class ProductDetailController extends GetxController {
 
     valueSelectedVariant.value = response['quantity'] ?? 0;
     selectedVariantId.value = variantId;
+    cartQuantity.value = 1;
+  }
+
+  void increaseCartQuantity() {
+    if (cartQuantity.value < valueSelectedVariant.value) {
+      cartQuantity.value++;
+    }
+  }
+
+  void decreaseCartQuantity() {
+    if (cartQuantity.value > 1) {
+      cartQuantity.value--;
+    }
   }
 }

@@ -35,9 +35,14 @@ class ProductDetailController extends GetxController {
         .from('product_variants')
         .select()
         .eq('product_id', id);
-    variants.value = List<Map<String, dynamic>>.from(response);
 
-    // Auto-select the first variant if available
+    final sorted = List<Map<String, dynamic>>.from(response)..sort(
+      (a, b) =>
+          (a['size'] ?? '').toString().compareTo((b['size'] ?? '').toString()),
+    );
+
+    variants.value = sorted;
+
     if (variants.isNotEmpty) {
       final firstVariantId = variants.first['variant_id'];
       selectedVariantId.value = firstVariantId;

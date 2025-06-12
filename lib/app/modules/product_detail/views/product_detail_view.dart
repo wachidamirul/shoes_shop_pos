@@ -5,7 +5,6 @@ import 'package:iconsax/iconsax.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
-import '../../../utils/popups/loaders.dart';
 import '../../../widgets/appbar/app_bar.dart';
 import '../../../widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../widgets/custom_shapes/curved_edges/curved_edges_widget.dart';

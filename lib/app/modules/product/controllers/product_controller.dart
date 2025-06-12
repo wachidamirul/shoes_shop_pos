@@ -23,6 +23,13 @@ class ProductController extends GetxController {
     }
   }
 
+  void goToEditProduct(int productId) async {
+    final result = await Get.toNamed(Routes.PRODUCT_EDIT, arguments: productId);
+    if (result == true) {
+      fetchProducts();
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();

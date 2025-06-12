@@ -47,40 +47,35 @@ class ProductView extends GetView<ProductController> {
                   ),
                 ],
               ),
-              child: GestureDetector(
-                onTap: () {
-                  // Action for the product item tap
-                  print("Product item tapped: ${product['name']}");
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MyRoundedImage(
-                      width: 60,
-                      height: 60,
-                      isNetworkImage: true,
-                      imageUrl: product['image_url'] ?? '',
-                      applyImageRadius: true,
-                      borderRadius: MySizes.cardRadiusMd,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  MyRoundedImage(
+                    width: 60,
+                    height: 60,
+                    isNetworkImage: true,
+                    imageUrl: product['image_url'] ?? '',
+                    applyImageRadius: true,
+                    borderRadius: MySizes.cardRadiusMd,
+                  ),
+                  const SizedBox(width: MySizes.spaceBtwItems),
+                  Expanded(
+                    child: Text(
+                      product['name'] ?? '',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(width: MySizes.spaceBtwItems),
-                    Expanded(
-                      child: Text(
-                        product['name'] ?? '',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    const SizedBox(width: MySizes.spaceBtwItems),
-                    IconButton(
-                      onPressed: () {
-                        // Action for the edit button
-                      },
-                      icon: const Icon(Iconsax.edit, color: MyColors.primary),
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(width: MySizes.spaceBtwItems),
+                  IconButton(
+                    onPressed: () {
+                      controller.goToEditProduct(product['product_id']);
+                      print('Tapped on product: ${product['product_id']}');
+                    },
+                    icon: const Icon(Iconsax.edit, color: MyColors.primary),
+                  ),
+                ],
               ),
             );
           },

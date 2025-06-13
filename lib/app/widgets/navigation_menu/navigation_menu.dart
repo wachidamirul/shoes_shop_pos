@@ -68,7 +68,7 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
       body: IndexedStack(index: getIndex(), children: screenList),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          String? res = await SimpleBarcodeScanner.scanBarcode(
+          result = await SimpleBarcodeScanner.scanBarcode(
             context,
             isShowFlashIcon: false,
             delayMillis: 2000,
@@ -76,9 +76,11 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
             scanType: ScanType.qr,
           );
           setState(() {
-            result = res as String;
             if (result != null) {
-              MyLoaders.successSnackBar(title: 'Scan Result', message: result!);
+              Get.toNamed(
+                '/product-detail',
+                arguments: {'productId': int.tryParse(result!)},
+              );
             }
           });
         },

@@ -14,6 +14,7 @@ abstract class Routes {
   static const CARTS = _Paths.CARTS;
   static const PRODUCT_DETAIL = _Paths.PRODUCT_DETAIL;
   static const PRODUCT_EDIT = _Paths.PRODUCT_EDIT;
+  static const BARCODE_GENERATOR = _Paths.BARCODE_GENERATOR;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const CARTS = '/carts';
   static const PRODUCT_DETAIL = '/product-detail';
   static const PRODUCT_EDIT = '/product-edit';
+  static const BARCODE_GENERATOR = '/barcode-generator';
 }

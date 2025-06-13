@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../routes/app_pages.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../widgets/appbar/app_bar.dart';
 import '../controllers/product_edit_controller.dart';
@@ -17,6 +18,17 @@ class ProductEditView extends GetView<ProductEditController> {
         implyLeading: true,
         showbackArrow: true,
         leadingIcon: Iconsax.arrow_left,
+        actions: [
+          IconButton(
+            icon: const Icon(Iconsax.barcode),
+            onPressed: () {
+              Get.toNamed(
+                Routes.BARCODE_GENERATOR,
+                arguments: {'product_id': controller.productId.value},
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

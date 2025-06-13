@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/analytic/bindings/analytic_binding.dart';
 import '../modules/analytic/views/analytic_view.dart';
+import '../modules/barcode_generator/bindings/barcode_generator_binding.dart';
+import '../modules/barcode_generator/views/barcode_generator_view.dart';
 import '../modules/carts/bindings/carts_binding.dart';
 import '../modules/carts/views/carts_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -81,6 +83,11 @@ class AppPages {
       name: _Paths.PRODUCT_EDIT,
       page: () => const ProductEditView(),
       binding: ProductEditBinding(),
+    ),
+    GetPage(
+      name: _Paths.BARCODE_GENERATOR,
+      page: () => const BarcodeGeneratorView(),
+      binding: BarcodeGeneratorBinding(),
     ),
   ];
 }

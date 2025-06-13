@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
 class BarcodeGeneratorController extends GetxController {
-  //TODO: Implement BarcodeGeneratorController
+  final String barcodeData =
+      Get.arguments?['product_id']?.toString() ?? 'No Data';
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +18,4 @@ class BarcodeGeneratorController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

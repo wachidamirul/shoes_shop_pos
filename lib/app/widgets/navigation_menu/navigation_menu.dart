@@ -14,7 +14,6 @@ import '../../modules/profile/controllers/profile_controller.dart';
 import '../../modules/profile/views/profile_view.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/helpers/helper_functions.dart';
-import '../../utils/popups/loaders.dart';
 import '../../utils/theme/theme_controller.dart';
 
 class MyNavigationMenu extends StatefulWidget {
@@ -68,7 +67,7 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
       body: IndexedStack(index: getIndex(), children: screenList),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          result = await SimpleBarcodeScanner.scanBarcode(
+          String? res = await SimpleBarcodeScanner.scanBarcode(
             context,
             isShowFlashIcon: false,
             delayMillis: 2000,
@@ -76,11 +75,18 @@ class _MyNavigationMenuState extends State<MyNavigationMenu> {
             scanType: ScanType.qr,
           );
           setState(() {
+            result = res;
+            print(result);
             if (result != null) {
-              Get.toNamed(
-                '/product-detail',
-                arguments: {'productId': int.tryParse(result!)},
-              );
+              final productId = int.tryParse(result!);
+              if (productId != null && productId >= 0) {
+                Get.toNamed(
+                  '/product-detail',
+                  arguments: {'productId': productId},
+                );
+              } else {
+                Get.back();
+              }
             }
           });
         },
